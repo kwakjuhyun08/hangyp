@@ -9,6 +9,7 @@ export default function GateScreen({ onUnlock }: { onUnlock: () => void }) {
   const { t, dir } = useLang();
   const [codeInput, setCodeInput] = useState('');
   const [showError, setShowError] = useState(false);
+  const [errorDetail, setErrorDetail] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
   async function submit() {
@@ -24,9 +25,12 @@ export default function GateScreen({ onUnlock }: { onUnlock: () => void }) {
         setShowError(false);
         onUnlock();
       } else {
+        const bodyText = await res.text().catch(() => '');
+        setErrorDetail(`HTTP ${res.status} — ${bodyText}`);
         setShowError(true);
       }
-    } catch {
+    } catch (e) {
+      setErrorDetail(String(e));
       setShowError(true);
     } finally {
       setSubmitting(false);
@@ -124,7 +128,10 @@ export default function GateScreen({ onUnlock }: { onUnlock: () => void }) {
         />
 
         {showError && (
-          <div style={{ color: '#e07267', fontSize: 12.5, marginBottom: 14 }}>{t.error}</div>
+          <div style={{ color: '#e07267', fontSize: 12.5, marginBottom: 14 }}>
+            {t.error}
+            <div style={{ fontSize: 10.5, opacity: 0.7, marginTop: 4, fontFamily: 'monospace' }}>{errorDetail}</div>
+          </div>
         )}
 
         <button

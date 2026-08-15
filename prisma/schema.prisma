@@ -1,0 +1,41 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model TeamMember {
+  id        String   @id @default(cuid())
+  order     Int
+  name      String
+  codeHash  String   @unique
+  batches   GalleryBatch[]
+  createdAt DateTime @default(now())
+}
+
+model GalleryBatch {
+  id        String         @id @default(cuid())
+  authorId  String
+  author    TeamMember     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  caption   String         @default("")
+  likes     Int            @default(0)
+  views     Int            @default(0)
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+  photos    GalleryPhoto[]
+}
+
+model GalleryPhoto {
+  id        String       @id @default(cuid())
+  batchId   String
+  batch     GalleryBatch @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  url       String
+  order     Int          @default(0)
+  createdAt DateTime     @default(now())
+}

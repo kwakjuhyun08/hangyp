@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #0c0c0c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+}
+
+a {
+  color: #2451a4;
+}
+a:hover {
+  color: #f0b429;
+}
+
+.hg-nav::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes hg-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+@keyframes hg-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+  }
+}
+
+/* Section padding rhythm ported from the prototype's sectionPad140 (symmetric)
+   and sectionPad160120 (asymmetric bottom) responsive values. */
+.hg-pad-sym {
+  padding: 140px 40px;
+}
+.hg-pad-asym {
+  padding: 140px 40px 120px;
+}
+@media (max-width: 1024px) {
+  .hg-pad-sym {
+    padding: 110px 40px;
+  }
+  .hg-pad-asym {
+    padding: 110px 40px 90px;
+  }
+}
+@media (max-width: 640px) {
+  .hg-pad-sym {
+    padding: 72px 24px;
+  }
+  .hg-pad-asym {
+    padding: 72px 24px 56px;
+  }
+}
+
+.hg-team-card:hover {
+  transform: scale(0.96);
+  z-index: 5;
+}
+.hg-team-card:active {
+  transform: scale(0.94);
+  z-index: 5;
+}
+
+.hg-desktop-only {
+  display: block;
+}
+.hg-mobile-only {
+  display: none;
+}
+@media (max-width: 768px) {
+  .hg-desktop-only {
+    display: none;
+  }
+  .hg-mobile-only {
+    display: block;
+  }
+}
+
+.hg-culture-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+@media (max-width: 640px) {
+  .hg-culture-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.hg-culture-card {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.hg-culture-card:hover {
+  border-color: rgba(22, 22, 21, 0.25) !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* Team detail card: side-by-side on desktop (small fixed portrait). On phones it
+   stacks — portrait on top, full-width and much bigger with a real aspect ratio,
+   info block below. */
+.hg-team-detail-card {
+  padding: 48px;
+}
+.hg-team-detail-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+.hg-team-detail-portrait {
+  width: 120px;
+  height: 150px;
+  flex-shrink: 0;
+}
+.hg-team-detail-info {
+  min-width: 200px;
+}
+.hg-team-detail-name {
+  font-size: 26px;
+}
+.hg-team-detail-grid {
+  grid-template-columns: minmax(90px, auto) 1fr;
+  font-size: 13.5px;
+  gap: 8px 16px;
+}
+@media (max-width: 480px) {
+  .hg-team-detail-card {
+    padding: 24px;
+  }
+  .hg-team-detail-inner {
+    flex-direction: column;
+  }
+  .hg-team-detail-portrait {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/4;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  .hg-team-detail-info {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+.hg-header {
+  padding: 16px 5vw;
+}
+.hg-header-logo {
+  height: 34px;
+}
+.hg-header-nav {
+  gap: 15px;
+  font-size: 15px;
+  margin: 0 16px;
+}
+@media (max-width: 768px) {
+  .hg-header {
+    padding: 12px 3vw;
+  }
+  .hg-header-logo {
+    height: 24px;
+  }
+  .hg-header-nav {
+    gap: 9px;
+    font-size: 11px;
+    margin: 0 10px;
+  }
+}

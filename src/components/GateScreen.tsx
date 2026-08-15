@@ -173,3 +173,4 @@ export default function GateScreen({ onUnlock }: { onUnlock: () => void }) {
     </div>
   );
 }
+ 

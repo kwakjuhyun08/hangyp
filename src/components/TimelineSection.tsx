@@ -2,7 +2,33 @@
 
 import { useState } from 'react';
 import { useLang } from '@/lib/LangContext';
+import type { Phase } from '@/lib/i18n';
 import SectionDots from '@/components/SectionDots';
+
+interface PhaseVM extends Phase {
+  isOpen: boolean;
+  toggle: () => void;
+}
+
+function TimelineCardContent({ p }: { p: PhaseVM }) {
+  return (
+    <>
+      <PhotoPlaceholder onClick={p.toggle} />
+      <div style={{ fontSize: 12, fontFamily: 'monospace', color: 'rgba(22,22,21,0.4)', marginBottom: 6 }}>
+        {p.date}
+      </div>
+      <div
+        onClick={p.toggle}
+        style={{ fontSize: 19, fontWeight: 800, marginBottom: p.isOpen ? 8 : 0, cursor: 'pointer' }}
+      >
+        {p.title}
+      </div>
+      {p.isOpen && (
+        <div style={{ fontSize: 14, lineHeight: 1.7, color: 'rgba(22,22,21,0.8)' }}>{p.desc}</div>
+      )}
+    </>
+  );
+}
 
 function PhotoPlaceholder({ onClick }: { onClick: () => void }) {
   return (
@@ -80,24 +106,7 @@ export default function TimelineSection() {
               <div style={{ flex: 1, minWidth: 0, display: 'flex', justifyContent: 'flex-end', paddingRight: 36 }}>
                 {p.isLeft && (
                   <div style={{ width: 300, maxWidth: '100%', textAlign: 'right' }}>
-                    <PhotoPlaceholder onClick={p.toggle} />
-                    <div style={{ fontSize: 12, fontFamily: 'monospace', color: 'rgba(22,22,21,0.4)', marginBottom: 6 }}>
-                      {p.date}
-                    </div>
-                    <div style={{ fontSize: 19, fontWeight: 800, marginBottom: 8 }}>{p.title}</div>
-                    <div
-                      style={{
-                        fontSize: 14,
-                        lineHeight: 1.7,
-                        color: 'rgba(22,22,21,0.8)',
-                        display: '-webkit-box',
-                        WebkitBoxOrient: 'vertical',
-                        WebkitLineClamp: p.isOpen ? 'unset' : 2,
-                        overflow: 'hidden',
-                      }}
-                    >
-                      {p.desc}
-                    </div>
+                    <TimelineCardContent p={p} />
                   </div>
                 )}
               </div>
@@ -105,24 +114,7 @@ export default function TimelineSection() {
               <div style={{ flex: 1, minWidth: 0, display: 'flex', justifyContent: 'flex-start', paddingLeft: 36 }}>
                 {!p.isLeft && (
                   <div style={{ width: 300, maxWidth: '100%', textAlign: 'left' }}>
-                    <PhotoPlaceholder onClick={p.toggle} />
-                    <div style={{ fontSize: 12, fontFamily: 'monospace', color: 'rgba(22,22,21,0.4)', marginBottom: 6 }}>
-                      {p.date}
-                    </div>
-                    <div style={{ fontSize: 19, fontWeight: 800, marginBottom: 8 }}>{p.title}</div>
-                    <div
-                      style={{
-                        fontSize: 14,
-                        lineHeight: 1.7,
-                        color: 'rgba(22,22,21,0.8)',
-                        display: '-webkit-box',
-                        WebkitBoxOrient: 'vertical',
-                        WebkitLineClamp: p.isOpen ? 'unset' : 2,
-                        overflow: 'hidden',
-                      }}
-                    >
-                      {p.desc}
-                    </div>
+                    <TimelineCardContent p={p} />
                   </div>
                 )}
               </div>

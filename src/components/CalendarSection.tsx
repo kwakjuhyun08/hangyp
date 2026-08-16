@@ -95,9 +95,10 @@ export default function CalendarSection() {
           dir="ltr"
           style={{ maxWidth: 1080, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 40 }}
         >
-          {months.map((mo) => (
+          {months.map((mo, idx) => (
             <div
               key={mo.label}
+              className={idx === 1 ? 'hg-cal-second-month' : undefined}
               style={{
                 background: 'rgba(255,255,255,0.07)',
                 backdropFilter: 'blur(20px)',

@@ -29,6 +29,28 @@ a:hover {
   display: none;
 }
 
+.hg-contact-label {
+  width: 150px;
+}
+@media (max-width: 480px) {
+  .hg-contact-row {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+  .hg-contact-label {
+    width: auto;
+  }
+  .hg-contact-value {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .hg-cal-second-month {
+    display: none;
+  }
+}
+
 @keyframes hg-bounce {
   0%,
   100% {
@@ -61,14 +83,14 @@ a:hover {
 /* Section padding rhythm ported from the prototype's sectionPad140 (symmetric)
    and sectionPad160120 (asymmetric bottom) responsive values. */
 .hg-pad-sym {
-  padding: 140px 40px;
+  padding: 200px 40px 140px;
 }
 .hg-pad-asym {
   padding: 140px 40px 120px;
 }
 @media (max-width: 1024px) {
   .hg-pad-sym {
-    padding: 110px 40px;
+    padding: 160px 40px 110px;
   }
   .hg-pad-asym {
     padding: 110px 40px 90px;
@@ -76,7 +98,7 @@ a:hover {
 }
 @media (max-width: 640px) {
   .hg-pad-sym {
-    padding: 72px 24px;
+    padding: 120px 24px 72px;
   }
   .hg-pad-asym {
     padding: 72px 24px 56px;

@@ -98,10 +98,11 @@ export default function AboutSection() {
               <div
                 key={m.k}
                 style={{
+                  boxSizing: 'border-box',
                   border: '2px solid transparent',
                   borderRadius: 12,
                   padding: '18px 24px',
-                  minWidth: 150,
+                  width: 230,
                   boxShadow: '0px 0px 24px 0px rgba(22,22,21,0.125)',
                   background: 'rgba(255,255,255,0.92)',
                 }}

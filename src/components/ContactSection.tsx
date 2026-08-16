@@ -28,6 +28,7 @@ export default function ContactSection() {
           {channels.map((c) => (
             <div
               key={c.label}
+              className="hg-contact-row"
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -38,10 +39,10 @@ export default function ContactSection() {
                 padding: '18px 22px',
               }}
             >
-              <div style={{ fontSize: 13, fontWeight: 700, color: 'rgba(22,22,21,0.4)', width: 150, flexShrink: 0 }}>
+              <div className="hg-contact-label" style={{ fontSize: 13, fontWeight: 700, color: 'rgba(22,22,21,0.4)', flexShrink: 0 }}>
                 {c.label}
               </div>
-              <div style={{ fontSize: 15, color: '#161615', wordBreak: 'break-word', minWidth: 0, flex: 1 }}>{c.value}</div>
+              <div className="hg-contact-value" style={{ fontSize: 15, color: '#161615', wordBreak: 'break-word', minWidth: 0, flex: 1 }}>{c.value}</div>
             </div>
           ))}
         </div>

@@ -32,14 +32,6 @@ export default function CultureSection() {
   return (
     <div id="culture">
       <section className="hg-pad-asym" style={{ background: '#F9FAFB', color: '#161615', position: 'relative' }}>
-        <div style={{ textAlign: 'center', marginBottom: 60 }}>
-          <SectionDots />
-          <div style={{ fontSize: 'clamp(28px,3.2vw,42px)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 14 }}>
-            {t.cultureTitle}
-          </div>
-          <div style={{ fontSize: 16, color: '#4E5968', lineHeight: 1.6 }}>{t.cultureSub}</div>
-        </div>
-
         {selected ? (
           <Fragment key="detail">
             <div style={{ maxWidth: 640, margin: '0 auto' }}>
@@ -85,6 +77,13 @@ export default function CultureSection() {
           </Fragment>
         ) : (
           <Fragment key="grid">
+            <div style={{ textAlign: 'center', marginBottom: 60 }}>
+              <SectionDots />
+              <div style={{ fontSize: 'clamp(28px,3.2vw,42px)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 14 }}>
+                {t.cultureTitle}
+              </div>
+              <div style={{ fontSize: 16, color: '#4E5968', lineHeight: 1.6 }}>{t.cultureSub}</div>
+            </div>
             <div
               className="hg-culture-grid"
               style={{ display: 'grid', gap: 16, maxWidth: 1080, margin: '0 auto' }}

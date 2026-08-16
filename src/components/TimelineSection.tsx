@@ -67,7 +67,6 @@ export default function TimelineSection() {
     isLeft: i % 2 === 0,
     isOpen: openIdx === i,
     toggle: () => setOpenIdx((cur) => (cur === i ? -1 : i)),
-    deskMarginTop: i === 0 ? 0 : -150,
   }));
 
   return (
@@ -102,7 +101,6 @@ export default function TimelineSection() {
                 alignItems: 'center',
                 position: 'relative',
                 paddingBottom: 70,
-                marginTop: p.deskMarginTop,
               }}
             >
               <div style={{ flex: 1, minWidth: 0, display: 'flex', justifyContent: 'flex-end', paddingRight: 36 }}>
@@ -140,24 +138,7 @@ export default function TimelineSection() {
             <div key={p.title} style={{ display: 'flex', alignItems: 'flex-start', gap: 14, position: 'relative', paddingBottom: 40 }}>
               <div style={{ width: 14, height: 14, borderRadius: '50%', background: '#161615', flexShrink: 0, zIndex: 2, marginTop: 4 }} />
               <div style={{ flex: 1, minWidth: 0, textAlign: 'left' }}>
-                <PhotoPlaceholder onClick={p.toggle} />
-                <div style={{ fontSize: 12, fontFamily: 'monospace', color: 'rgba(22,22,21,0.4)', marginBottom: 6 }}>
-                  {p.date}
-                </div>
-                <div style={{ fontSize: 19, fontWeight: 800, marginBottom: 8 }}>{p.title}</div>
-                <div
-                  style={{
-                    fontSize: 14,
-                    lineHeight: 1.7,
-                    color: 'rgba(22,22,21,0.8)',
-                    display: '-webkit-box',
-                    WebkitBoxOrient: 'vertical',
-                    WebkitLineClamp: p.isOpen ? 'unset' : 2,
-                    overflow: 'hidden',
-                  }}
-                >
-                  {p.desc}
-                </div>
+                <TimelineCardContent p={p} />
               </div>
             </div>
           ))}

@@ -1,15 +1,33 @@
 'use client';
 
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { useLang } from '@/lib/LangContext';
 import SectionDots from '@/components/SectionDots';
 
 export default function CultureSection() {
   const { t } = useLang();
   const [selectedIdx, setSelectedIdx] = useState(-1);
+  const prevSelectedIdx = useRef<number | undefined>(undefined);
 
   const items = t.culture.map((c, i) => ({ ...c, num: String(i + 1).padStart(2, '0') }));
   const selected = selectedIdx >= 0 ? items[selectedIdx] : null;
+
+  // Switching between the grid and a card's detail swaps content at the same
+  // DOM position, but the page's scroll offset doesn't change — clicking a
+  // card far down the grid left the (much shorter) detail view off-screen
+  // above the viewport. Scroll the section back into view whenever the
+  // selection actually changes (guards against React Strict Mode's dev-only
+  // double effect invocation re-firing with an unchanged value on mount).
+  useEffect(() => {
+    const prev = prevSelectedIdx.current;
+    prevSelectedIdx.current = selectedIdx;
+    if (prev === undefined || prev === selectedIdx) return;
+    const section = document.getElementById('culture');
+    if (!section) return;
+    const headerH = 76;
+    const top = section.getBoundingClientRect().top + window.scrollY - headerH;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }, [selectedIdx]);
 
   return (
     <div id="culture">

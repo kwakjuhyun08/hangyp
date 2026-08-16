@@ -51,6 +51,24 @@ function PortraitPlaceholder() {
 export default function TeamSection() {
   const { t } = useLang();
   const [selectedId, setSelectedId] = useState<number | null>(null);
+  const prevSelectedId = useRef<number | null | undefined>(undefined);
+
+  // Switching between the card carousel and a member's detail swaps content
+  // at the same DOM position, but the page's scroll offset doesn't change —
+  // clicking a card far along the carousel left the (much shorter) detail
+  // view off-screen above the viewport. Scroll the section into view whenever
+  // the selection actually changes (guards against React Strict Mode's dev-only
+  // double effect invocation re-firing with an unchanged value on mount).
+  useEffect(() => {
+    const prev = prevSelectedId.current;
+    prevSelectedId.current = selectedId;
+    if (prev === undefined || prev === selectedId) return;
+    const section = document.getElementById('team');
+    if (!section) return;
+    const headerH = 76;
+    const top = section.getBoundingClientRect().top + window.scrollY - headerH;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }, [selectedId]);
 
   const trackRef = useRef<HTMLDivElement>(null);
   const thumbRef = useRef<HTMLDivElement>(null);

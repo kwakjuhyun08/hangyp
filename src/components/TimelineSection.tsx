@@ -13,18 +13,20 @@ interface PhaseVM extends Phase {
 function TimelineCardContent({ p }: { p: PhaseVM }) {
   return (
     <>
-      <PhotoPlaceholder onClick={p.toggle} />
       <div style={{ fontSize: 12, fontFamily: 'monospace', color: 'rgba(22,22,21,0.4)', marginBottom: 6 }}>
         {p.date}
       </div>
       <div
         onClick={p.toggle}
-        style={{ fontSize: 19, fontWeight: 800, marginBottom: p.isOpen ? 8 : 0, cursor: 'pointer' }}
+        style={{ fontSize: 19, fontWeight: 800, marginBottom: p.isOpen ? 14 : 0, cursor: 'pointer' }}
       >
         {p.title}
       </div>
       {p.isOpen && (
-        <div style={{ fontSize: 14, lineHeight: 1.7, color: 'rgba(22,22,21,0.8)' }}>{p.desc}</div>
+        <>
+          <PhotoPlaceholder onClick={p.toggle} />
+          <div style={{ fontSize: 14, lineHeight: 1.7, color: 'rgba(22,22,21,0.8)' }}>{p.desc}</div>
+        </>
       )}
     </>
   );

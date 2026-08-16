@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { upload } from '@vercel/blob/client';
 import { useLang } from '@/lib/LangContext';
 
 interface PendingFile {
@@ -76,10 +77,22 @@ export default function GalleryUploadPage({
     if (!pendingFiles.length || submitting) return;
     setSubmitting(true);
     try {
-      const form = new FormData();
-      form.set('caption', caption);
-      for (const f of pendingFiles) form.append('files', f.file);
-      const res = await fetch('/api/gallery', { method: 'POST', body: form });
+      // Files go straight from the browser to Blob storage (bypasses the
+      // serverless function's request-body size limit); only the resulting
+      // URLs are sent to /api/gallery to create the DB record.
+      const blobs = await Promise.all(
+        pendingFiles.map((f) =>
+          upload(`gallery/${f.file.name}`, f.file, {
+            access: 'public',
+            handleUploadUrl: '/api/gallery/blob-upload',
+          })
+        )
+      );
+      const res = await fetch('/api/gallery', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ caption, urls: blobs.map((b) => b.url) }),
+      });
       if (res.ok) {
         pendingFiles.forEach((f) => URL.revokeObjectURL(f.url));
         setPendingFiles([]);

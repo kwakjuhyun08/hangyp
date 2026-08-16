@@ -3,7 +3,6 @@ import { cookies } from 'next/headers';
 import { prisma } from '@/lib/prisma';
 import { requireGate } from '@/lib/require-gate';
 import { UPLOADER_COOKIE_NAME, verifyUploaderToken } from '@/lib/uploader-session';
-import { saveFile } from '@/lib/storage';
 
 export async function GET() {
   if (!(await requireGate())) {
@@ -43,18 +42,18 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'unauthorized' }, { status: 401 });
   }
 
-  const form = await req.formData();
-  const caption = String(form.get('caption') ?? '');
-  const files = form.getAll('files').filter((f): f is File => f instanceof File);
+  const body = await req.json().catch(() => null);
+  const caption = typeof body?.caption === 'string' ? body.caption : '';
+  const urls: string[] = Array.isArray(body?.urls)
+    ? body.urls.filter((u: unknown): u is string => typeof u === 'string')
+    : [];
 
-  if (files.length === 0) {
+  if (urls.length === 0) {
     return NextResponse.json({ error: 'no_files' }, { status: 400 });
   }
-  if (files.length > 10) {
+  if (urls.length > 10) {
     return NextResponse.json({ error: 'too_many_files' }, { status: 400 });
   }
-
-  const urls = await Promise.all(files.map((f) => saveFile(f)));
 
   const batch = await prisma.galleryBatch.create({
     data: {

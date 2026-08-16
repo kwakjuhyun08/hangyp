@@ -8,16 +8,7 @@ export async function POST(req: NextRequest) {
   const expected = process.env.GATE_ACCESS_CODE?.trim();
 
   if (!expected) {
-    const keys = Object.keys(process.env);
-    return NextResponse.json(
-      {
-        ok: false,
-        error: 'server_misconfigured',
-        totalEnvVarCount: keys.length,
-        keysContainingGate: keys.filter((k) => k.toUpperCase().includes('GATE')),
-      },
-      { status: 500 }
-    );
+    return NextResponse.json({ ok: false, error: 'server_misconfigured' }, { status: 500 });
   }
   if (!code || code.toLowerCase() !== expected.toLowerCase()) {
     return NextResponse.json({ ok: false }, { status: 401 });

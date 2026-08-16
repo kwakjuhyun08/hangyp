@@ -60,13 +60,19 @@ function PhotoPlaceholder({ onClick }: { onClick: () => void }) {
 
 export default function TimelineSection() {
   const { t } = useLang();
-  const [openIdx, setOpenIdx] = useState(-1);
+  const [openIdxs, setOpenIdxs] = useState<Set<number>>(new Set());
 
   const phases = t.phases.map((p, i) => ({
     ...p,
     isLeft: i % 2 === 0,
-    isOpen: openIdx === i,
-    toggle: () => setOpenIdx((cur) => (cur === i ? -1 : i)),
+    isOpen: openIdxs.has(i),
+    toggle: () =>
+      setOpenIdxs((cur) => {
+        const next = new Set(cur);
+        if (next.has(i)) next.delete(i);
+        else next.add(i);
+        return next;
+      }),
   }));
 
   return (

@@ -8,20 +8,34 @@ export default function CultureSection() {
   const { t } = useLang();
   const [selectedIdx, setSelectedIdx] = useState(-1);
   const prevSelectedIdx = useRef<number | undefined>(undefined);
+  const scrollBeforeDetail = useRef<number | null>(null);
 
   const items = t.culture.map((c, i) => ({ ...c, num: String(i + 1).padStart(2, '0') }));
   const selected = selectedIdx >= 0 ? items[selectedIdx] : null;
 
+  function openDetail(i: number) {
+    scrollBeforeDetail.current = window.scrollY;
+    setSelectedIdx(i);
+  }
+
   // Switching between the grid and a card's detail swaps content at the same
-  // DOM position, but the page's scroll offset doesn't change — clicking a
-  // card far down the grid left the (much shorter) detail view off-screen
-  // above the viewport. Scroll the section back into view whenever the
-  // selection actually changes (guards against React Strict Mode's dev-only
-  // double effect invocation re-firing with an unchanged value on mount).
+  // DOM position, but the page's scroll offset doesn't change. Opening a card
+  // scrolls the section into view below the nav; going back restores the
+  // exact scroll position the card was opened from (guards against React
+  // Strict Mode's dev-only double effect invocation re-firing with an
+  // unchanged value on mount).
   useEffect(() => {
     const prev = prevSelectedIdx.current;
     prevSelectedIdx.current = selectedIdx;
     if (prev === undefined || prev === selectedIdx) return;
+
+    if (selectedIdx === -1) {
+      if (scrollBeforeDetail.current !== null) {
+        window.scrollTo({ top: scrollBeforeDetail.current, behavior: 'smooth' });
+      }
+      return;
+    }
+
     const section = document.getElementById('culture');
     if (!section) return;
     const headerH = 76;
@@ -92,7 +106,7 @@ export default function CultureSection() {
                 <div
                   key={c.title}
                   className="hg-culture-card"
-                  onClick={() => setSelectedIdx(i)}
+                  onClick={() => openDetail(i)}
                   style={{
                     background: 'rgba(255,255,255,0.82)',
                     backdropFilter: 'blur(16px)',

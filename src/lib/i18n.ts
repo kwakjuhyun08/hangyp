@@ -120,8 +120,6 @@ export interface Copy {
   contactPhoneVal: string;
   contactKakaoLabel: string;
   contactKakaoVal: string;
-  contactFormLabel: string;
-  contactFormVal: string;
   galleryEmpty: string;
   commentPlaceholder: string;
   deleteBtn: string;
@@ -152,9 +150,13 @@ export const COPY: Record<Lang, Copy> = {
     calMonthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
     calYearPrefix: '2026년 ',
     calEvents: [
-      { month: 7, day: 10, span: 2, label: '발대식' },
-      { month: 8, day: 9, span: 1, label: '1차 사전 모임 (온라인)' },
-      { month: 8, day: 27, span: 2, label: '2차 사전 모임 (오프라인)' },
+      { month: 6, day: 27, span: 1, label: '대표단 선발 면접' },
+      { month: 6, day: 29, span: 1, label: '대표단 선발 최종 합격' },
+      { month: 7, day: 10, span: 2, label: '발대식 및 사전 교육 1차' },
+      { month: 8, day: 9, span: 1, label: '2차 사전 교육 (온라인)' },
+      { month: 8, day: 27, span: 2, label: '국내 교류 활동' },
+      { month: 10, day: 20, span: 1, label: '파견 결단식 및 3차 사전교육' },
+      { month: 10, day: 21, span: 10, label: '파견 활동' },
     ],
     teamTitle: '팀 소개',
     teamSub: '카드를 선택하면 상세 프로필로 이동합니다',
@@ -178,7 +180,7 @@ export const COPY: Record<Lang, Copy> = {
     aboutMeaning: [
       { k: 'Han', v: '한국' },
       { k: 'Gyp', v: '이집트' },
-      { k: '한집(One house)', v: '하나의 집, 하나의 지붕' },
+      { k: '한집(One house)', v: '하나의 집, 하나의 팀' },
     ],
     missionTitle: '미션',
     missionText: '서로 다른 문화권의 청년들이 직접 만나 이해하고 협력하며, 한국과 이집트를 잇는 다음 세대의 우정을 만듭니다.',
@@ -247,7 +249,7 @@ export const COPY: Record<Lang, Copy> = {
     uploadBackBtn: '← 갤러리로 돌아가기',
     postBtn: '게시하기',
     contactTitle: '연락처',
-    contactSub: '문의사항은 아래 채널로 편하게 연락해 주세요. (임시 연락처, 추후 업데이트 예정)',
+    contactSub: '문의사항은 아래 채널로 편하게 연락해 주세요.',
     contactEmailLabel: '이메일',
     contactEmailVal: 'hangyp2026@gmail.com',
     contactInstaLabel: '인스타그램',
@@ -256,15 +258,19 @@ export const COPY: Record<Lang, Copy> = {
     contactPhoneVal: '010-1234-5678',
     contactKakaoLabel: '카카오톡 오픈채팅',
     contactKakaoVal: 'open.kakao.com/o/gHanGyp2026',
-    contactFormLabel: '구글폼 문의',
-    contactFormVal: 'forms.gle/hangyp2026contact',
     galleryEmpty: '아직 업로드된 사진이 없습니다.',
     commentPlaceholder: '코멘트를 입력하세요',
     deleteBtn: '삭제',
     phases: [
-      { title: '팀 발대식', date: '7월 10~11일', desc: '선발된 팀원들이 한자리에 모여 정식으로 팀을 출범합니다.' },
-      { title: '1차 사전 모임 (온라인)', date: '8월 9일', desc: '온라인으로 모여 서로를 알아가고 프로그램을 준비합니다.' },
-      { title: '2차 사전 모임 (오프라인)', date: '8월 27~28일', desc: '직접 만나 실습과 토론을 통해 교류를 준비합니다.' },
+      {
+        title: '발대식 및 사전 교육 1차',
+        date: '7월 10~11일',
+        desc: '세계시민교육, 글로벌 에티켓 교육, 기참가자와의 대화, 역할 분담 및 계획 수립',
+      },
+      { title: '2차 사전 교육 (온라인)', date: '8월 9일', desc: '소그룹 토의토론 결과 공유' },
+      { title: '국내 교류 활동', date: '8월 27~28일', desc: '' },
+      { title: '파견 결단식 및 3차 사전교육', date: '10월 20일', desc: '' },
+      { title: '파견 활동', date: '10월 21~30일', desc: '' },
     ],
   },
   en: {
@@ -293,9 +299,13 @@ export const COPY: Record<Lang, Copy> = {
     ],
     calYearSuffix: ' 2026',
     calEvents: [
-      { month: 7, day: 10, span: 2, label: 'Kick-off Ceremony' },
-      { month: 8, day: 9, span: 1, label: '1st Pre-meeting (Online)' },
-      { month: 8, day: 27, span: 2, label: '2nd Pre-meeting (Offline)' },
+      { month: 6, day: 27, span: 1, label: 'Delegation Selection Interview' },
+      { month: 6, day: 29, span: 1, label: 'Final Selection Results' },
+      { month: 7, day: 10, span: 2, label: 'Kickoff Ceremony & 1st Preparatory Session' },
+      { month: 8, day: 9, span: 1, label: '2nd Preparatory Session (Online)' },
+      { month: 8, day: 27, span: 2, label: 'Domestic Exchange Activity' },
+      { month: 10, day: 20, span: 1, label: 'Departure Ceremony & 3rd Preparatory Session' },
+      { month: 10, day: 21, span: 10, label: 'Dispatch Activity' },
     ],
     teamTitle: 'Team',
     teamSub: 'Select a card to view the full profile',
@@ -319,7 +329,7 @@ export const COPY: Record<Lang, Copy> = {
     aboutMeaning: [
       { k: 'Han', v: 'Korea' },
       { k: 'Gyp', v: 'Egypt' },
-      { k: 'HanGyp (한집)', v: 'One House, One Roof' },
+      { k: 'HanGyp (한집)', v: 'One House, One Team' },
     ],
     missionTitle: 'Mission',
     missionText:
@@ -390,7 +400,7 @@ export const COPY: Record<Lang, Copy> = {
     uploadBackBtn: '← Back to Gallery',
     postBtn: 'Post',
     contactTitle: 'Contact',
-    contactSub: 'Feel free to reach out through any of the channels below. (Placeholder contact info, to be updated.)',
+    contactSub: 'Feel free to reach out through any of the channels below.',
     contactEmailLabel: 'Email',
     contactEmailVal: 'hangyp2026@gmail.com',
     contactInstaLabel: 'Instagram',
@@ -399,15 +409,19 @@ export const COPY: Record<Lang, Copy> = {
     contactPhoneVal: '+82 10-1234-5678',
     contactKakaoLabel: 'KakaoTalk Open Chat',
     contactKakaoVal: 'open.kakao.com/o/gHanGyp2026',
-    contactFormLabel: 'Google Form Inquiry',
-    contactFormVal: 'forms.gle/hangyp2026contact',
     galleryEmpty: 'No photos uploaded yet.',
     commentPlaceholder: 'Add a comment',
     deleteBtn: 'Delete',
     phases: [
-      { title: 'Team Launch Ceremony', date: 'Jul 10–11', desc: 'The selected members gather together for the official launch of the team.' },
-      { title: '1st Preparatory Meeting (Online)', date: 'Aug 9', desc: 'We meet online to get to know each other and prepare for the program.' },
-      { title: '2nd Preparatory Meeting (Offline)', date: 'Aug 27–28', desc: 'We meet in person for hands-on practice and discussion to prepare for the exchange.' },
+      {
+        title: 'Kickoff Ceremony & 1st Preparatory Session',
+        date: 'Jul 10–11',
+        desc: 'Global citizenship education, global etiquette training, conversation with past participants, role assignment and planning',
+      },
+      { title: '2nd Preparatory Session (Online)', date: 'Aug 9', desc: 'Sharing small-group discussion results' },
+      { title: 'Domestic Exchange Activity', date: 'Aug 27–28', desc: '' },
+      { title: 'Departure Ceremony & 3rd Preparatory Session', date: 'Oct 20', desc: '' },
+      { title: 'Dispatch Activity', date: 'Oct 21–30', desc: '' },
     ],
   },
   ar: {
@@ -436,9 +450,13 @@ export const COPY: Record<Lang, Copy> = {
     ],
     calYearSuffix: ' 2026',
     calEvents: [
-      { month: 7, day: 10, span: 2, label: 'حفل الانطلاق' },
-      { month: 8, day: 9, span: 1, label: 'اللقاء التمهيدي الأول (عبر الإنترنت)' },
-      { month: 8, day: 27, span: 2, label: 'اللقاء التمهيدي الثاني (حضوري)' },
+      { month: 6, day: 27, span: 1, label: 'مقابلة اختيار الوفد' },
+      { month: 6, day: 29, span: 1, label: 'نتائج الاختيار النهائية' },
+      { month: 7, day: 10, span: 2, label: 'حفل الانطلاق والتدريب التحضيري الأول' },
+      { month: 8, day: 9, span: 1, label: 'التدريب التحضيري الثاني (عبر الإنترنت)' },
+      { month: 8, day: 27, span: 2, label: 'نشاط التبادل المحلي' },
+      { month: 10, day: 20, span: 1, label: 'حفل التوديع والتدريب التحضيري الثالث' },
+      { month: 10, day: 21, span: 10, label: 'نشاط الإيفاد' },
     ],
     teamTitle: 'الفريق',
     teamSub: 'اختر بطاقة لعرض الملف الكامل',
@@ -462,7 +480,7 @@ export const COPY: Record<Lang, Copy> = {
     aboutMeaning: [
       { k: 'Han', v: 'كوريا' },
       { k: 'Gyp', v: 'مصر' },
-      { k: 'HanGyp (한집)', v: 'بيت واحد، سقف واحد' },
+      { k: 'HanGyp (한집)', v: 'بيت واحد، فريق واحد' },
     ],
     missionTitle: 'المهمة',
     missionText: 'الجمع بين شباب من ثقافات مختلفة للتفاهم والتعاون المباشر، وبناء جيل جديد من الصداقة بين كوريا ومصر.',
@@ -531,7 +549,7 @@ export const COPY: Record<Lang, Copy> = {
     uploadBackBtn: '← العودة إلى المعرض',
     postBtn: 'نشر',
     contactTitle: 'اتصل بنا',
-    contactSub: 'يسعدنا تواصلكم معنا عبر القنوات التالية. (بيانات تواصل مؤقتة، سيتم تحديثها لاحقًا)',
+    contactSub: 'يسعدنا تواصلكم معنا عبر القنوات التالية.',
     contactEmailLabel: 'البريد الإلكتروني',
     contactEmailVal: 'hangyp2026@gmail.com',
     contactInstaLabel: 'إنستغرام',
@@ -540,15 +558,19 @@ export const COPY: Record<Lang, Copy> = {
     contactPhoneVal: '+82 10-1234-5678',
     contactKakaoLabel: 'محادثة كاكاو المفتوحة',
     contactKakaoVal: 'open.kakao.com/o/gHanGyp2026',
-    contactFormLabel: 'استمارة جوجل للاستفسارات',
-    contactFormVal: 'forms.gle/hangyp2026contact',
     galleryEmpty: 'لا توجد صور مرفوعة بعد.',
     commentPlaceholder: 'أضف تعليقًا',
     deleteBtn: 'حذف',
     phases: [
-      { title: 'حفل انطلاق الفريق', date: '10–11 يوليو', desc: 'يجتمع الأعضاء المختارون معًا للانطلاق الرسمي للفريق.' },
-      { title: 'الاجتماع التحضيري الأول (عبر الإنترنت)', date: '9 أغسطس', desc: 'نلتقي عبر الإنترنت للتعارف والاستعداد للبرنامج.' },
-      { title: 'الاجتماع التحضيري الثاني (حضوري)', date: '27–28 أغسطس', desc: 'نلتقي حضوريًا للتدريب العملي والنقاش استعدادًا للتبادل.' },
+      {
+        title: 'حفل الانطلاق والتدريب التحضيري الأول',
+        date: '10–11 يوليو',
+        desc: 'تعليم المواطنة العالمية، تدريب على آداب السلوك العالمية، حوار مع المشاركين السابقين، توزيع الأدوار ووضع الخطط',
+      },
+      { title: 'التدريب التحضيري الثاني (عبر الإنترنت)', date: '9 أغسطس', desc: 'مشاركة نتائج نقاش المجموعات الصغيرة' },
+      { title: 'نشاط التبادل المحلي', date: '27–28 أغسطس', desc: '' },
+      { title: 'حفل التوديع والتدريب التحضيري الثالث', date: '20 أكتوبر', desc: '' },
+      { title: 'نشاط الإيفاد', date: '21–30 أكتوبر', desc: '' },
     ],
   },
 };

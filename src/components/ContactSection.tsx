@@ -11,7 +11,6 @@ export default function ContactSection() {
     { label: t.contactInstaLabel, value: t.contactInstaVal },
     { label: t.contactPhoneLabel, value: t.contactPhoneVal },
     { label: t.contactKakaoLabel, value: t.contactKakaoVal },
-    { label: t.contactFormLabel, value: t.contactFormVal },
   ];
 
   return (

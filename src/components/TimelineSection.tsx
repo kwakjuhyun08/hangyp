@@ -25,7 +25,9 @@ function TimelineCardContent({ p }: { p: PhaseVM }) {
       {p.isOpen && (
         <>
           <PhotoPlaceholder onClick={p.toggle} />
-          <div style={{ fontSize: 14, lineHeight: 1.7, color: 'rgba(22,22,21,0.8)' }}>{p.desc}</div>
+          {p.desc && (
+            <div style={{ fontSize: 14, lineHeight: 1.7, color: 'rgba(22,22,21,0.8)' }}>{p.desc}</div>
+          )}
         </>
       )}
     </>

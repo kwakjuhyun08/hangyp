@@ -111,7 +111,7 @@ export default function TeamSection() {
       offsetRef.current = off;
       if (trackRef.current) trackRef.current.style.transform = `translateX(${off}px)`;
       if (thumbRef.current) {
-        const progress = (off + one) / one; // 0..1
+        const progress = -off / one; // 0..1, 0 = start, 1 = fully advanced (right-hidden cards revealed)
         const leftPct = progress * (100 - 18);
         thumbRef.current.style.left = `${leftPct}%`;
       }
@@ -145,8 +145,9 @@ export default function TeamSection() {
     const one = oneSetWidthRef.current;
     const barW = barWidthRef.current || 1;
     const dxBar = e.clientX - dragStartXRef.current;
-    // dragging right on the bar should move the track right too
-    const dxTrack = (dxBar / barW) * one;
+    // dragging right on the bar should reveal the right-hand (currently hidden) cards,
+    // which means shifting the track left — i.e. offset moves opposite to the drag.
+    const dxTrack = -(dxBar / barW) * one;
     offsetRef.current = dragStartOffsetRef.current + dxTrack;
   }
 

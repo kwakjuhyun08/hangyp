@@ -26,6 +26,7 @@ export interface Phase {
   title: string;
   date: string;
   desc: string;
+  photo?: string;
 }
 
 export interface Copy {
@@ -268,6 +269,7 @@ export const COPY: Record<Lang, Copy> = {
         title: '발대식 및 사전 교육 1차',
         date: '7월 10~11일',
         desc: '세계시민교육, 글로벌 에티켓 교육, 기참가자와의 대화, 역할 분담 및 계획 수립',
+        photo: '/uploads/timeline/kickoff-1.jpg',
       },
       { title: '2차 사전 교육 (온라인)', date: '8월 9일', desc: '소그룹 토의토론 결과 공유' },
     ],
@@ -417,6 +419,7 @@ export const COPY: Record<Lang, Copy> = {
         title: 'Kickoff Ceremony & 1st Preparatory Session',
         date: 'Jul 10–11',
         desc: 'Global citizenship education, global etiquette training, conversation with past participants, role assignment and planning',
+        photo: '/uploads/timeline/kickoff-1.jpg',
       },
       { title: '2nd Preparatory Session (Online)', date: 'Aug 9', desc: 'Sharing small-group discussion results' },
     ],
@@ -564,6 +567,7 @@ export const COPY: Record<Lang, Copy> = {
         title: 'حفل الانطلاق والتدريب التحضيري الأول',
         date: '10–11 يوليو',
         desc: 'تعليم المواطنة العالمية، تدريب على آداب السلوك العالمية، حوار مع المشاركين السابقين، توزيع الأدوار ووضع الخطط',
+        photo: '/uploads/timeline/kickoff-1.jpg',
       },
       { title: 'التدريب التحضيري الثاني (عبر الإنترنت)', date: '9 أغسطس', desc: 'مشاركة نتائج نقاش المجموعات الصغيرة' },
     ],

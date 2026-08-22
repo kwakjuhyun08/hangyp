@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { useLang } from '@/lib/LangContext';
 import type { Phase } from '@/lib/i18n';
 import SectionDots from '@/components/SectionDots';
@@ -24,13 +25,32 @@ function TimelineCardContent({ p }: { p: PhaseVM }) {
       </div>
       {p.isOpen && (
         <>
-          <PhotoPlaceholder onClick={p.toggle} />
+          {p.photo ? <TimelinePhoto src={p.photo} alt={p.title} onClick={p.toggle} /> : <PhotoPlaceholder onClick={p.toggle} />}
           {p.desc && (
             <div style={{ fontSize: 14, lineHeight: 1.7, color: 'rgba(22,22,21,0.8)' }}>{p.desc}</div>
           )}
         </>
       )}
     </>
+  );
+}
+
+function TimelinePhoto({ src, alt, onClick }: { src: string; alt: string; onClick: () => void }) {
+  return (
+    <div
+      onClick={onClick}
+      style={{
+        position: 'relative',
+        width: '100%',
+        aspectRatio: '4/3',
+        borderRadius: 18,
+        marginBottom: 14,
+        overflow: 'hidden',
+        cursor: 'pointer',
+      }}
+    >
+      <Image src={src} alt={alt} fill sizes="300px" style={{ objectFit: 'cover' }} />
+    </div>
   );
 }
 

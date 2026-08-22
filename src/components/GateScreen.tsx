@@ -18,7 +18,7 @@ export default function GateScreen({ onUnlock }: { onUnlock: () => void }) {
       const res = await fetch('/api/gate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code: codeInput.trim() }),
+        body: JSON.stringify({ code: codeInput }),
       });
       if (res.ok) {
         setShowError(false);

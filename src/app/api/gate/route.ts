@@ -8,9 +8,9 @@ import { MEMBERS } from '@/lib/members';
 // instead of everyone sharing the same site-wide password.
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
-  const code = typeof body?.code === 'string' ? body.code.trim() : '';
+  const code = typeof body?.code === 'string' ? body.code : '';
 
-  const matches = code.length > 0 && MEMBERS.some((m) => m.nameEn.toLowerCase() === code.toLowerCase());
+  const matches = code.length > 0 && MEMBERS.some((m) => m.nameEn === code);
   if (!matches) {
     return NextResponse.json({ ok: false }, { status: 401 });
   }

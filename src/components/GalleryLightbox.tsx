@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useLang } from '@/lib/LangContext';
 import type { GalleryBatch } from '@/components/GallerySection';
 
 const LIKED_KEY = 'hg_gallery_liked';
@@ -26,7 +25,6 @@ export default function GalleryLightbox({
   onChanged: (patch: Partial<GalleryBatch>) => void;
   onDeleted: () => void;
 }) {
-  const { t } = useLang();
   const [photoIdx, setPhotoIdx] = useState(0);
   const [showMenu, setShowMenu] = useState(false);
   const [editing, setEditing] = useState(false);
@@ -198,10 +196,10 @@ export default function GalleryLightbox({
                     }}
                     style={{ padding: '10px 14px', fontSize: 13, cursor: 'pointer', borderBottom: '1px solid rgba(22,22,21,0.07)', color: '#000' }}
                   >
-                    수정
+                    Edit
                   </div>
                   <div onClick={deletePost} style={{ padding: '10px 14px', fontSize: 13, cursor: 'pointer', color: '#a5342a' }}>
-                    {t.deleteBtn}
+                    Delete
                   </div>
                 </div>
               )}
@@ -295,7 +293,7 @@ export default function GalleryLightbox({
         </div>
 
         <div style={{ padding: '8px 16px 0', fontSize: 13, fontWeight: 700, color: '#161615' }}>
-          {t.postedBy} <span>{batch.authorName}</span>
+          Posted by <span>{batch.authorName}</span>
         </div>
 
         {editing ? (
@@ -359,11 +357,11 @@ export default function GalleryLightbox({
                 ))}
               </div>
             )}
-            <div style={{ display: 'flex', gap: 8 }}>
-            <input
-              type="text"
+            <div style={{ display: 'flex', gap: 8, alignItems: 'flex-end' }}>
+            <textarea
               value={captionDraft}
               onChange={(e) => setCaptionDraft(e.target.value)}
+              rows={3}
               style={{
                 flex: 1,
                 boxSizing: 'border-box',
@@ -374,6 +372,7 @@ export default function GalleryLightbox({
                 fontFamily: 'inherit',
                 background: '#EDEDED',
                 color: '#000',
+                resize: 'vertical',
               }}
             />
             <button
@@ -392,12 +391,12 @@ export default function GalleryLightbox({
                 opacity: saving ? 0.7 : 1,
               }}
             >
-              완료
+              Done
             </button>
             </div>
           </div>
         ) : (
-          <div style={{ padding: '4px 16px 18px', fontSize: 13, color: 'rgba(22,22,21,0.8)' }}>{batch.caption}</div>
+          <div style={{ padding: '4px 16px 18px', fontSize: 13, color: 'rgba(22,22,21,0.8)', whiteSpace: 'pre-wrap' }}>{batch.caption}</div>
         )}
       </div>
     </div>

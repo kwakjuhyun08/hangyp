@@ -9,7 +9,7 @@ import { TEAM_BIOS, type MemberBio } from '@/lib/team-bios';
 
 const CARD_WIDTH = 230;
 const CARD_GAP = 26;
-const SPEED_PX_PER_SEC = 34; // rightward auto-scroll speed
+const SPEED_PX_PER_SEC = 68; // rightward auto-scroll speed
 
 const FIELD_KEYS = [
   ['fPosition', 'position'],

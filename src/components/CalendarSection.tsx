@@ -33,11 +33,16 @@ export default function CalendarSection() {
   const [monthIdx, setMonthIdx] = useState(6); // July
   const [selectedEvent, setSelectedEvent] = useState(-1);
 
-  const months = [monthIdx, monthIdx + 1].map((mi) =>
+  const monthIndices = monthIdx + 1 <= 11 ? [monthIdx, monthIdx + 1] : [monthIdx];
+  const months = monthIndices.map((mi) =>
     buildMonth(mi, t.calEvents, t.calMonthNames, t.calYearPrefix, t.calYearSuffix)
   );
 
-  const ev = selectedEvent >= 0 ? t.calEvents[selectedEvent] : null;
+  // Deselecting when the event's month scrolls out of view keeps the detail
+  // text below in sync with what's actually on screen (rather than showing
+  // a stale selection from a month the user already navigated away from).
+  const visibleMonthNums = monthIndices.map((mi) => mi + 1);
+  const ev = selectedEvent >= 0 && visibleMonthNums.includes(t.calEvents[selectedEvent].month) ? t.calEvents[selectedEvent] : null;
   const selDate = ev ? (ev.span > 1 ? `${ev.month}.${ev.day}–${ev.day + ev.span - 1}` : `${ev.month}.${ev.day}`) : '';
 
   return (
@@ -73,7 +78,7 @@ export default function CalendarSection() {
             ‹
           </div>
           <div
-            onClick={() => setMonthIdx((m) => Math.min(10, m + 1))}
+            onClick={() => setMonthIdx((m) => Math.min(11, m + 1))}
             style={{
               width: 34,
               height: 34,
@@ -84,7 +89,7 @@ export default function CalendarSection() {
               justifyContent: 'center',
               cursor: 'pointer',
               fontSize: 14,
-              opacity: monthIdx === 10 ? 0.25 : 1,
+              opacity: monthIdx === 11 ? 0.25 : 1,
             }}
           >
             ›

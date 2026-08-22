@@ -11,23 +11,27 @@ interface PhaseVM extends Phase {
   toggle: () => void;
 }
 
-function TimelineCardContent({ p }: { p: PhaseVM }) {
+function TimelineCardContent({ p, large }: { p: PhaseVM; large?: boolean }) {
   return (
     <>
-      <div style={{ fontSize: 12, fontFamily: 'monospace', color: 'rgba(22,22,21,0.4)', marginBottom: 6 }}>
+      <div style={{ fontSize: large ? 13.5 : 12, fontFamily: 'monospace', color: 'rgba(22,22,21,0.4)', marginBottom: 6 }}>
         {p.date}
       </div>
       <div
         onClick={p.toggle}
-        style={{ fontSize: 19, fontWeight: 800, marginBottom: p.isOpen ? 14 : 0, cursor: 'pointer' }}
+        style={{ fontSize: large ? 24 : 19, fontWeight: 800, marginBottom: p.isOpen ? 14 : 0, cursor: 'pointer' }}
       >
         {p.title}
       </div>
       {p.isOpen && (
         <>
-          {p.photo ? <TimelinePhoto src={p.photo} alt={p.title} onClick={p.toggle} /> : <PhotoPlaceholder onClick={p.toggle} />}
+          {p.photo ? (
+            <TimelinePhoto src={p.photo} alt={p.title} onClick={p.toggle} large={large} />
+          ) : (
+            <PhotoPlaceholder onClick={p.toggle} />
+          )}
           {p.desc && (
-            <div style={{ fontSize: 14, lineHeight: 1.7, color: 'rgba(22,22,21,0.8)' }}>{p.desc}</div>
+            <div style={{ fontSize: large ? 16 : 14, lineHeight: 1.7, color: 'rgba(22,22,21,0.8)' }}>{p.desc}</div>
           )}
         </>
       )}
@@ -35,7 +39,7 @@ function TimelineCardContent({ p }: { p: PhaseVM }) {
   );
 }
 
-function TimelinePhoto({ src, alt, onClick }: { src: string; alt: string; onClick: () => void }) {
+function TimelinePhoto({ src, alt, onClick, large }: { src: string; alt: string; onClick: () => void; large?: boolean }) {
   return (
     <div
       onClick={onClick}
@@ -49,7 +53,7 @@ function TimelinePhoto({ src, alt, onClick }: { src: string; alt: string; onClic
         cursor: 'pointer',
       }}
     >
-      <Image src={src} alt={alt} fill sizes="300px" style={{ objectFit: 'cover' }} />
+      <Image src={src} alt={alt} fill sizes={large ? '440px' : '300px'} style={{ objectFit: 'cover' }} />
     </div>
   );
 }
@@ -133,16 +137,16 @@ export default function TimelineSection() {
             >
               <div style={{ flex: 1, minWidth: 0, display: 'flex', justifyContent: 'flex-end', paddingRight: 36 }}>
                 {p.isLeft && (
-                  <div style={{ width: 300, maxWidth: '100%', textAlign: 'right' }}>
-                    <TimelineCardContent p={p} />
+                  <div style={{ width: 440, maxWidth: '100%', textAlign: 'right' }}>
+                    <TimelineCardContent p={p} large />
                   </div>
                 )}
               </div>
               <div style={{ width: 14, height: 14, borderRadius: '50%', background: '#161615', flexShrink: 0, zIndex: 2 }} />
               <div style={{ flex: 1, minWidth: 0, display: 'flex', justifyContent: 'flex-start', paddingLeft: 36 }}>
                 {!p.isLeft && (
-                  <div style={{ width: 300, maxWidth: '100%', textAlign: 'left' }}>
-                    <TimelineCardContent p={p} />
+                  <div style={{ width: 440, maxWidth: '100%', textAlign: 'left' }}>
+                    <TimelineCardContent p={p} large />
                   </div>
                 )}
               </div>

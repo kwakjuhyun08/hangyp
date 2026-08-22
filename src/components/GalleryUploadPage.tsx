@@ -210,11 +210,11 @@ export default function GalleryUploadPage({
             )}
             <div style={{ fontSize: 11.5, color: 'rgba(22,22,21,0.4)', marginBottom: 10 }}>{pendingFiles.length}/10</div>
 
-            <input
-              type="text"
+            <textarea
               value={caption}
               onChange={(e) => setCaption(e.target.value)}
               placeholder={t.commentPlaceholder}
+              rows={3}
               style={{
                 width: '100%',
                 boxSizing: 'border-box',
@@ -226,6 +226,7 @@ export default function GalleryUploadPage({
                 marginBottom: 10,
                 background: '#fff',
                 color: '#000',
+                resize: 'vertical',
               }}
             />
 

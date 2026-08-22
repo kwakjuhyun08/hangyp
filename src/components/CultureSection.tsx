@@ -6,6 +6,28 @@ import { useLang } from '@/lib/LangContext';
 import SectionDots from '@/components/SectionDots';
 import { CULTURE_ITEMS } from '@/lib/culture';
 
+const URL_RE = /(https?:\/\/[^\s)]+)/g;
+
+function linkify(text: string) {
+  const parts = text.split(URL_RE);
+  return parts.map((part, i) =>
+    i % 2 === 1 ? (
+      <a
+        key={i}
+        href={part}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={(e) => e.stopPropagation()}
+        style={{ color: '#3182F6', textDecoration: 'underline', wordBreak: 'break-all' }}
+      >
+        {part}
+      </a>
+    ) : (
+      <Fragment key={i}>{part}</Fragment>
+    )
+  );
+}
+
 function RevealRow({ label, value }: { label: string; value: string }) {
   const [open, setOpen] = useState(false);
   return (
@@ -27,7 +49,7 @@ function RevealRow({ label, value }: { label: string; value: string }) {
       </div>
       {open && (
         <div style={{ marginTop: 10, fontSize: 13, lineHeight: 1.7, color: 'rgba(22,22,21,0.75)', wordBreak: 'break-word' }}>
-          {value}
+          {linkify(value)}
         </div>
       )}
     </div>
@@ -113,7 +135,7 @@ export default function CultureSection() {
               </div>
               <div style={{ fontSize: 28, fontWeight: 900, marginBottom: 6 }}>{selected.title}</div>
               <div style={{ fontSize: 12.5, color: 'rgba(22,22,21,0.4)', marginBottom: 20 }}>{selected.by}</div>
-              <div style={{ fontSize: 15.5, lineHeight: 1.8, color: 'rgba(22,22,21,0.8)', marginBottom: 8 }}>{selected.desc}</div>
+              <div style={{ fontSize: 15.5, lineHeight: 1.8, color: 'rgba(22,22,21,0.8)', marginBottom: 8, whiteSpace: 'pre-wrap' }}>{selected.desc}</div>
 
               <div style={{ marginTop: 24 }}>
                 {selected.contentSource && <RevealRow label={t.cultureContentSource} value={selected.contentSource} />}

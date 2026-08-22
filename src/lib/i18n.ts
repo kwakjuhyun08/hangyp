@@ -17,11 +17,6 @@ export interface TimelineItem {
   desc: string;
 }
 
-export interface CultureItem {
-  title: string;
-  desc: string;
-}
-
 export interface Phase {
   title: string;
   date: string;
@@ -90,7 +85,9 @@ export interface Copy {
   cultureTitle: string;
   cultureSub: string;
   cultureBackBtn: string;
-  culture: CultureItem[];
+  cultureContentSource: string;
+  culturePhotoSource: string;
+  cultureExploreLink: string;
   galleryTitle: string;
   gallerySub: string;
   galleryNote: string;
@@ -206,30 +203,11 @@ export const COPY: Record<Lang, Copy> = {
     journeySub: '발대식부터 만나는 그날까지',
     journeyNote: '실제 사진·영상·소감은 활동이 진행되며 업데이트됩니다.',
     cultureTitle: '문화',
-    cultureSub: '이집트 청소년들에게 소개하고 싶은 한국의 20가지 모습',
+    cultureSub: '이집트 청소년들에게 소개하고 싶은 한국의 22가지 모습',
     cultureBackBtn: '← 문화로 돌아가기',
-    culture: [
-      { title: '한글', desc: '세종대왕이 창제한 한국 고유의 표음 문자로, 배우기 쉽고 과학적인 구조를 가지고 있습니다.' },
-      { title: '한복', desc: '한국의 전통 의상으로, 곡선의 아름다움과 색의 조화를 중요하게 여깁니다.' },
-      { title: '음식 문화', desc: '밥과 반찬을 나누어 먹는 상차림과 발효 음식이 발달한 한국의 식문화입니다.' },
-      { title: '전통 건축', desc: '자연과 조화를 이루는 한옥과 온돌 난방 등 한국 고유의 건축 방식입니다.' },
-      { title: '단청', desc: '전통 건축물에 칠하는 다섯 가지 색의 문양으로, 건물을 보호하고 격을 나타냅니다.' },
-      { title: '차 문화', desc: '마음을 다스리고 손님을 대접하는 한국의 전통 다도 문화입니다.' },
-      { title: '학교 생활', desc: '동아리, 급식, 수학여행 등 한국 청소년들의 일상적인 학교 문화입니다.' },
-      { title: '교육 문화', desc: '높은 교육열과 대학 입시가 사회 전반에 큰 영향을 미치는 한국의 교육 환경입니다.' },
-      { title: '기술과 반도체', desc: '세계적인 수준의 반도체·IT 산업으로 한국 경제를 이끄는 기술 경쟁력입니다.' },
-      { title: 'K-pop과 대중문화', desc: '음악, 드라마, 영화 등 전 세계 청년들과 소통하는 한국의 대중문화입니다.' },
-      { title: '청년 리더십과 혁신', desc: '새로운 도전을 두려워하지 않는 한국 청년들의 창의성과 리더십입니다.' },
-      { title: '자연과 사계절', desc: '뚜렷한 사계절과 산, 바다가 어우러진 한국의 자연 환경입니다.' },
-      { title: '명절과 세시풍속', desc: '설날, 추석 등 계절과 함께하는 한국의 전통 명절과 풍습입니다.' },
-      { title: '태권도', desc: '한국에서 만들어진 무술로, 예의와 정신 수양을 함께 강조합니다.' },
-      { title: '도시와 대중교통', desc: '지하철과 버스가 촘촘히 연결된 편리하고 안전한 한국의 대중교통입니다.' },
-      { title: '서울의 도시 풍경', desc: '고층 빌딩과 궁궐이 공존하는 서울의 독특한 도시 경관입니다.' },
-      { title: '편의점 문화', desc: '24시간 운영되는 편의점은 한국인의 일상에서 빼놓을 수 없는 공간입니다.' },
-      { title: '병역 제도', desc: '성인 남성이 일정 기간 군 복무를 하는 한국의 독특한 사회 제도입니다.' },
-      { title: 'e스포츠와 게임 문화', desc: '한국은 e스포츠 종주국으로 불릴 만큼 게임 산업과 프로게이머 문화가 발달했습니다.' },
-      { title: '정(情) 문화', desc: '정(情)은 사람 사이의 깊은 유대감을 뜻하는 한국인 고유의 정서입니다.' },
-    ],
+    cultureContentSource: '내용 출처',
+    culturePhotoSource: '사진 출처',
+    cultureExploreLink: '추가 탐구 자료',
     galleryTitle: '갤러리',
     gallerySub: '활동 사진과 영상은 이곳에 채워집니다',
     galleryNote: '실제 사진·영상은 활동이 진행되며 업데이트됩니다.',
@@ -356,30 +334,11 @@ export const COPY: Record<Lang, Copy> = {
     journeySub: 'From the launch ceremony to the day we meet',
     journeyNote: 'Real photos, videos, and reflections will be added as activities take place.',
     cultureTitle: 'Culture',
-    cultureSub: '20 sides of Korea we want Egyptian youth to know',
+    cultureSub: '22 sides of Korea we want Egyptian youth to know',
     cultureBackBtn: '← Back to Culture',
-    culture: [
-      { title: 'Hangul', desc: "Korea's own phonetic alphabet, created by King Sejong, known for being easy to learn and scientifically designed." },
-      { title: 'Hanbok', desc: "Korea's traditional clothing, valued for its graceful curves and harmony of color." },
-      { title: 'Food Culture', desc: 'Korean dining centers on shared side dishes with rice, and a long tradition of fermented foods.' },
-      { title: 'Traditional Architecture', desc: "Hanok houses and ondol floor heating reflect Korea's architecture in harmony with nature." },
-      { title: 'Dancheong', desc: 'Five-color patterns painted on traditional buildings that protect the wood and signal status.' },
-      { title: 'Tea Culture', desc: 'A traditional practice of tea ceremony used to calm the mind and welcome guests.' },
-      { title: 'School Life', desc: 'Clubs, school meals, and field trips are part of everyday life for Korean students.' },
-      { title: 'Education Culture', desc: 'A strong emphasis on education and college entrance exams shapes much of Korean society.' },
-      { title: 'Technology & Semiconductors', desc: "World-leading semiconductor and IT industries drive much of Korea's economy." },
-      { title: 'K-pop & Pop Culture', desc: 'Music, dramas, and film connect Korea with young people around the world.' },
-      { title: 'Youth Leadership & Innovation', desc: 'Korean youth are known for creativity and a willingness to take on new challenges.' },
-      { title: 'Nature & Four Seasons', desc: "Korea's distinct four seasons, mountains, and coastlines shape its natural landscape." },
-      { title: 'Holidays & Traditions', desc: 'Seollal, Chuseok, and other traditional Korean holidays tied to the changing seasons.' },
-      { title: 'Taekwondo', desc: 'A martial art that originated in Korea, emphasizing both discipline and respect.' },
-      { title: 'Cities & Public Transit', desc: "Korea's dense, convenient subway and bus networks connect cities safely." },
-      { title: 'Seoul Cityscape', desc: "Skyscrapers and centuries-old palaces stand side by side in Seoul's distinct skyline." },
-      { title: 'Convenience Store Culture', desc: '24-hour convenience stores are an essential part of everyday life in Korea.' },
-      { title: 'Military Service', desc: 'A unique system requiring able-bodied men to serve in the military for a set period.' },
-      { title: 'Esports & Gaming Culture', desc: 'Korea is often called the birthplace of esports, with a thriving gaming industry and pro-gamer culture.' },
-      { title: 'Jeong (정)', desc: 'Jeong is a uniquely Korean sense of deep emotional bond between people.' },
-    ],
+    cultureContentSource: 'Content source',
+    culturePhotoSource: 'Photo source',
+    cultureExploreLink: 'Explore further',
     galleryTitle: 'Gallery',
     gallerySub: 'Photos and videos from our activities will appear here',
     galleryNote: 'Real photos and videos will be added as activities take place.',
@@ -504,30 +463,11 @@ export const COPY: Record<Lang, Copy> = {
     journeySub: 'من حفل الانطلاق إلى يوم اللقاء',
     journeyNote: 'ستُضاف الصور ومقاطع الفيديو والانطباعات الحقيقية مع تقدّم الأنشطة.',
     cultureTitle: 'الثقافة',
-    cultureSub: '20 جانبًا من كوريا نودّ أن يتعرف عليها شباب مصر',
+    cultureSub: '22 جانبًا من كوريا نودّ أن يتعرف عليها شباب مصر',
     cultureBackBtn: '← العودة إلى الثقافة',
-    culture: [
-      { title: 'الهانغل', desc: 'الأبجدية الصوتية الخاصة بكوريا، ابتكرها الملك سيجونغ، وتشتهر بسهولة تعلمها وتصميمها العلمي.' },
-      { title: 'الهانبوك', desc: 'الزي التقليدي الكوري، يتميز بجمال خطوطه المنحنية وتناغم ألوانه.' },
-      { title: 'ثقافة الطعام', desc: 'تعتمد الموائد الكورية على مشاركة الأطباق الجانبية مع الأرز، وتقليد عريق في الأطعمة المخمّرة.' },
-      { title: 'العمارة التقليدية', desc: 'منازل الهانوك وتدفئة الأونـدول الأرضية تعكس عمارة كورية منسجمة مع الطبيعة.' },
-      { title: 'دانتشيونغ', desc: 'زخارف بخمسة ألوان تُرسم على المباني التقليدية لحماية الخشب والدلالة على المكانة.' },
-      { title: 'ثقافة الشاي', desc: 'تقليد مراسم الشاي الذي يُستخدم لتهدئة النفس واستقبال الضيوف.' },
-      { title: 'الحياة المدرسية', desc: 'الأندية ووجبات المدرسة والرحلات الميدانية جزء من الحياة اليومية للطلاب الكوريين.' },
-      { title: 'ثقافة التعليم', desc: 'يشكّل الاهتمام الكبير بالتعليم وامتحانات القبول الجامعي جزءًا كبيرًا من المجتمع الكوري.' },
-      { title: 'التكنولوجيا وأشباه الموصلات', desc: 'تقود صناعات أشباه الموصلات وتقنية المعلومات الرائدة عالميًا جزءًا كبيرًا من اقتصاد كوريا.' },
-      { title: 'K-pop والثقافة الشعبية', desc: 'تربط الموسيقى والمسلسلات والأفلام كوريا بالشباب حول العالم.' },
-      { title: 'قيادة الشباب والابتكار', desc: 'يُعرف الشباب الكوري بالإبداع والاستعداد لخوض تحديات جديدة.' },
-      { title: 'الطبيعة والفصول الأربعة', desc: 'تشكّل الفصول الأربعة الواضحة والجبال والسواحل ملامح الطبيعة الكورية.' },
-      { title: 'الأعياد والتقاليد', desc: 'أعياد كورية تقليدية مثل سولّال وتشوسوك، مرتبطة بتغيّر الفصول.' },
-      { title: 'التايكوندو', desc: 'فن قتالي نشأ في كوريا، يجمع بين الانضباط واحترام الآخرين.' },
-      { title: 'المدن والنقل العام', desc: 'شبكات مترو وحافلات كثيفة ومريحة تربط المدن الكورية بأمان.' },
-      { title: 'المشهد الحضري لسيول', desc: 'ناطحات السحاب والقصور العريقة تتجاور في أفق سيول المميز.' },
-      { title: 'ثقافة المتاجر المفتوحة على مدار الساعة', desc: 'تُعد المتاجر المفتوحة 24 ساعة جزءًا أساسيًا من الحياة اليومية في كوريا.' },
-      { title: 'الخدمة العسكرية', desc: 'نظام كوري فريد يُلزم الرجال الأصحاء بالخدمة العسكرية لفترة محددة.' },
-      { title: 'الرياضات الإلكترونية وثقافة الألعاب', desc: 'غالبًا ما تُوصف كوريا بمهد الرياضات الإلكترونية، بصناعة ألعاب مزدهرة وثقافة لاعبين محترفين.' },
-      { title: 'جيونغ (정)', desc: 'جيونغ مفهوم كوري فريد يعبّر عن الرابط العاطفي العميق بين الناس.' },
-    ],
+    cultureContentSource: 'مصدر المحتوى',
+    culturePhotoSource: 'مصدر الصورة',
+    cultureExploreLink: 'لمزيد من الاستكشاف',
     galleryTitle: 'المعرض',
     gallerySub: 'ستظهر هنا صور ومقاطع فيديو من أنشطتنا',
     galleryNote: 'ستُضاف الصور ومقاطع الفيديو الحقيقية مع تقدّم الأنشطة.',

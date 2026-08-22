@@ -1,16 +1,46 @@
 'use client';
 
 import { Fragment, useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import { useLang } from '@/lib/LangContext';
 import SectionDots from '@/components/SectionDots';
+import { CULTURE_ITEMS } from '@/lib/culture';
+
+function RevealRow({ label, value }: { label: string; value: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div style={{ borderTop: '1px solid rgba(22,22,21,0.1)', padding: '14px 0' }}>
+      <div
+        onClick={() => setOpen((v) => !v)}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          cursor: 'pointer',
+          fontSize: 13.5,
+          fontWeight: 700,
+          color: 'rgba(22,22,21,0.6)',
+        }}
+      >
+        {label}
+        <span style={{ fontSize: 12, color: 'rgba(22,22,21,0.35)' }}>{open ? '▲' : '▼'}</span>
+      </div>
+      {open && (
+        <div style={{ marginTop: 10, fontSize: 13, lineHeight: 1.7, color: 'rgba(22,22,21,0.75)', wordBreak: 'break-word' }}>
+          {value}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function CultureSection() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [selectedIdx, setSelectedIdx] = useState(-1);
   const prevSelectedIdx = useRef<number | undefined>(undefined);
   const scrollBeforeDetail = useRef<number | null>(null);
 
-  const items = t.culture.map((c, i) => ({ ...c, num: String(i + 1).padStart(2, '0') }));
+  const items = CULTURE_ITEMS[lang].map((c, i) => ({ ...c, num: String(i + 1).padStart(2, '0') }));
   const selected = selectedIdx >= 0 ? items[selectedIdx] : null;
 
   function openDetail(i: number) {
@@ -67,26 +97,29 @@ export default function CultureSection() {
               </button>
               <div
                 style={{
+                  position: 'relative',
                   width: '100%',
                   aspectRatio: '16/9',
                   borderRadius: 16,
                   marginBottom: 24,
+                  overflow: 'hidden',
                   background: 'repeating-linear-gradient(135deg,#f0efec 0 8px,#e6e5e1 8px 16px)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontFamily: 'monospace',
-                  fontSize: 11,
-                  color: 'rgba(22,22,21,0.4)',
                 }}
               >
-                photo / video placeholder
+                <Image src={selected.photo} alt={selected.title} fill sizes="640px" style={{ objectFit: 'cover' }} />
               </div>
               <div style={{ fontSize: 12, fontFamily: 'monospace', color: 'rgba(22,22,21,0.31)', marginBottom: 8 }}>
                 {selected.num}
               </div>
-              <div style={{ fontSize: 28, fontWeight: 900, marginBottom: 16 }}>{selected.title}</div>
-              <div style={{ fontSize: 15.5, lineHeight: 1.8, color: 'rgba(22,22,21,0.8)' }}>{selected.desc}</div>
+              <div style={{ fontSize: 28, fontWeight: 900, marginBottom: 6 }}>{selected.title}</div>
+              <div style={{ fontSize: 12.5, color: 'rgba(22,22,21,0.4)', marginBottom: 20 }}>{selected.by}</div>
+              <div style={{ fontSize: 15.5, lineHeight: 1.8, color: 'rgba(22,22,21,0.8)', marginBottom: 8 }}>{selected.desc}</div>
+
+              <div style={{ marginTop: 24 }}>
+                {selected.contentSource && <RevealRow label={t.cultureContentSource} value={selected.contentSource} />}
+                {selected.photoSource && <RevealRow label={t.culturePhotoSource} value={selected.photoSource} />}
+                {selected.exploreLink && <RevealRow label={t.cultureExploreLink} value={selected.exploreLink} />}
+              </div>
             </div>
           </Fragment>
         ) : (
@@ -126,6 +159,7 @@ export default function CultureSection() {
                       background: 'repeating-linear-gradient(135deg,#f0efec 0 8px,#e6e5e1 8px 16px)',
                     }}
                   >
+                    <Image src={c.photo} alt={c.title} fill sizes="(max-width: 700px) 50vw, 270px" style={{ objectFit: 'cover' }} />
                     <div
                       style={{
                         position: 'absolute',

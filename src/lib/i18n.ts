@@ -270,9 +270,6 @@ export const COPY: Record<Lang, Copy> = {
         desc: '세계시민교육, 글로벌 에티켓 교육, 기참가자와의 대화, 역할 분담 및 계획 수립',
       },
       { title: '2차 사전 교육 (온라인)', date: '8월 9일', desc: '소그룹 토의토론 결과 공유' },
-      { title: '국내 교류 활동', date: '8월 27~28일', desc: '' },
-      { title: '파견 결단식 및 3차 사전교육', date: '10월 20일', desc: '' },
-      { title: '파견 활동', date: '10월 21~30일', desc: '' },
     ],
   },
   en: {
@@ -422,9 +419,6 @@ export const COPY: Record<Lang, Copy> = {
         desc: 'Global citizenship education, global etiquette training, conversation with past participants, role assignment and planning',
       },
       { title: '2nd Preparatory Session (Online)', date: 'Aug 9', desc: 'Sharing small-group discussion results' },
-      { title: 'Domestic Exchange Activity', date: 'Aug 27–28', desc: '' },
-      { title: 'Departure Ceremony & 3rd Preparatory Session', date: 'Oct 20', desc: '' },
-      { title: 'Dispatch Activity', date: 'Oct 21–30', desc: '' },
     ],
   },
   ar: {
@@ -572,9 +566,6 @@ export const COPY: Record<Lang, Copy> = {
         desc: 'تعليم المواطنة العالمية، تدريب على آداب السلوك العالمية، حوار مع المشاركين السابقين، توزيع الأدوار ووضع الخطط',
       },
       { title: 'التدريب التحضيري الثاني (عبر الإنترنت)', date: '9 أغسطس', desc: 'مشاركة نتائج نقاش المجموعات الصغيرة' },
-      { title: 'نشاط التبادل المحلي', date: '27–28 أغسطس', desc: '' },
-      { title: 'حفل التوديع والتدريب التحضيري الثالث', date: '20 أكتوبر', desc: '' },
-      { title: 'نشاط الإيفاد', date: '21–30 أكتوبر', desc: '' },
     ],
   },
 };

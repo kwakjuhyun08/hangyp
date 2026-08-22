@@ -1,6 +1,7 @@
 'use client';
 
 import { Fragment, useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import { useLang } from '@/lib/LangContext';
 import SectionDots from '@/components/SectionDots';
 import { MEMBERS, cardBorder, glowShadow, selectedBorder, selectedGlow, type Member } from '@/lib/members';
@@ -27,25 +28,26 @@ const FIELD_KEYS = [
 
 const LOOP = [...MEMBERS, ...MEMBERS];
 
-function PortraitPlaceholder() {
+function Portrait({ member }: { member: Member }) {
   return (
     <div
       style={{
+        position: 'relative',
         width: '100%',
         aspectRatio: '3/4',
         borderRadius: 12,
         marginBottom: 18,
-        background:
-          'linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02)), repeating-linear-gradient(135deg,#1c1c1c 0 6px,#242424 6px 12px)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontFamily: 'monospace',
-        fontSize: 10,
-        color: 'rgba(255,255,255,0.4)',
+        overflow: 'hidden',
+        background: 'repeating-linear-gradient(135deg,#1c1c1c 0 6px,#242424 6px 12px)',
       }}
     >
-      portrait
+      <Image
+        src={`/uploads/team/member-${member.id}.jpg`}
+        alt={member.name}
+        fill
+        sizes="230px"
+        style={{ objectFit: 'cover' }}
+      />
     </div>
   );
 }
@@ -198,19 +200,19 @@ export default function TeamSection() {
                 <div
                   className="hg-team-detail-portrait"
                   style={{
+                    position: 'relative',
                     borderRadius: 10,
+                    overflow: 'hidden',
                     background: 'repeating-linear-gradient(135deg,#ececec 0 6px,#e2e2e2 6px 12px)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontFamily: 'monospace',
-                    fontSize: 9,
-                    color: 'rgba(22,22,21,0.38)',
-                    textAlign: 'center',
-                    padding: 6,
                   }}
                 >
-                  portrait
+                  <Image
+                    src={`/uploads/team/member-${selected.id}.jpg`}
+                    alt={displayName(selected)}
+                    fill
+                    sizes="280px"
+                    style={{ objectFit: 'cover' }}
+                  />
                 </div>
                 <div className="hg-team-detail-info" style={{ flex: 1 }}>
                   <div className="hg-team-detail-name" style={{ fontWeight: 800, marginBottom: 6 }}>
@@ -271,7 +273,7 @@ export default function TeamSection() {
                       transition: 'transform .2s ease, box-shadow .2s ease',
                     }}
                   >
-                    <PortraitPlaceholder />
+                    <Portrait member={m} />
                     <div style={{ fontSize: 17, fontWeight: 700, color: '#161615' }}>{displayName(m)}</div>
                     <div style={{ fontSize: 12.5, color: 'rgba(22,22,21,0.4)', marginTop: 5 }}>
                       {bios[m.id]?.position || t.tbd}

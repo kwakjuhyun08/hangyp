@@ -22,7 +22,7 @@ export interface MemberBio {
 export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
   ko: {
     1: {
-      position: '부팀장, 물품 관리, 홈페이지 제작, 명함 및 단체티 제작',
+      position: '부대표',
       age: '19',
       mbti: 'ENTJ',
       interests: 'AI, 디자인, 경제, 경영, 무언가 만들어 내는 것',
@@ -100,7 +100,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-32XX-80XX',
     },
     7: {
-      position: '문화발표',
+      position: '문화발표 담당',
       age: '17',
       mbti: 'ESTP',
       interests: '운동',
@@ -125,13 +125,13 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-67XX-69XX',
     },
     9: {
-      position: '사진 촬영',
+      position: '사진·영상 담당',
       age: '17',
       instagram: 'biinu.o',
       phone: '010-92XX-33XX',
     },
     10: {
-      position: '촬영 담당',
+      position: '사진·영상 담당',
       age: '17',
       mbti: 'ISTP',
       interests: '여행, 노래 듣기',
@@ -157,7 +157,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-55XX-61XX',
     },
     12: {
-      position: '홍보',
+      position: '홍보담당',
       age: '22',
       mbti: 'INTJ',
       interests: '여행, 운동, 자연, 문화 경험',
@@ -183,7 +183,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
   },
   en: {
     1: {
-      position: 'Deputy Team Lead, Supplies Management, Website Production, Business Cards & Team Shirts',
+      position: 'Deputy Team Leader',
       age: '19',
       mbti: 'ENTJ',
       interests: 'AI, design, economics, business, making things',
@@ -197,7 +197,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-53XX-29XX',
     },
     2: {
-      position: 'Secretary',
+      position: 'Documentation Manager',
       age: '18',
       mbti: 'INTJ',
       interests: 'Language & culture, travel',
@@ -211,7 +211,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-46XX-74XX',
     },
     3: {
-      position: 'PR',
+      position: 'Public Relations Coordinator',
       age: '17',
       mbti: 'ISTJ',
       interests: 'Fashion',
@@ -225,7 +225,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-88XX-84XX',
     },
     4: {
-      position: 'Team Lead',
+      position: 'Team Leader',
       age: '23',
       mbti: 'INFJ',
       interests: 'Healthy living / learning & insights',
@@ -247,7 +247,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-49XX-49XX',
     },
     6: {
-      position: 'Discussion Activities Lead',
+      position: 'Discussion Activities Coordinator',
       age: '17',
       mbti: 'INTP',
       interests: 'Movies',
@@ -261,7 +261,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-32XX-80XX',
     },
     7: {
-      position: 'Culture Presentation',
+      position: 'Cultural Presentation Coordinator',
       age: '17',
       mbti: 'ESTP',
       interests: 'Exercise',
@@ -275,7 +275,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-52XX-62XX',
     },
     8: {
-      position: 'Secretary',
+      position: 'Documentation Manager',
       age: '18',
       mbti: 'INFP',
       interests: 'Reading, swimming, self-development, writing',
@@ -286,13 +286,13 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-67XX-69XX',
     },
     9: {
-      position: 'Photography',
+      position: 'Photo & Video Coordinator',
       age: '17',
       instagram: 'biinu.o',
       phone: '010-92XX-33XX',
     },
     10: {
-      position: 'Filming',
+      position: 'Photo & Video Coordinator',
       age: '17',
       mbti: 'ISTP',
       interests: 'Travel, listening to music',
@@ -304,7 +304,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-58XX-07XX',
     },
     11: {
-      position: 'Deputy Lead',
+      position: 'Deputy Team Leader',
       age: '17',
       mbti: 'ISTP',
       interests: 'Travel',
@@ -318,7 +318,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-55XX-61XX',
     },
     12: {
-      position: 'PR',
+      position: 'Public Relations Coordinator',
       age: '22',
       mbti: 'INTJ',
       interests: 'Travel, exercise, nature, cultural experiences',
@@ -344,7 +344,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
   },
   ar: {
     1: {
-      position: 'نائب قائد الفريق، إدارة المستلزمات، إنشاء الموقع الإلكتروني، بطاقات العمل والقمصان الجماعية',
+      position: 'نائب رئيس الفريق',
       age: '19',
       mbti: 'ENTJ',
       interests: 'الذكاء الاصطناعي، التصميم، الاقتصاد، الإدارة، صنع الأشياء',
@@ -358,7 +358,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-53XX-29XX',
     },
     2: {
-      position: 'أمين السر',
+      position: 'مسؤول التوثيق',
       age: '18',
       mbti: 'INTJ',
       interests: 'اللغة والثقافة، السفر',
@@ -372,7 +372,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-46XX-74XX',
     },
     3: {
-      position: 'العلاقات العامة',
+      position: 'منسق العلاقات العامة',
       age: '17',
       mbti: 'ISTJ',
       interests: 'الموضة',
@@ -386,7 +386,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-88XX-84XX',
     },
     4: {
-      position: 'قائدة الفريق',
+      position: 'رئيس الفريق',
       age: '23',
       mbti: 'INFJ',
       interests: 'الحياة الصحية / التعلم والفهم',
@@ -400,7 +400,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-56XX-85XX',
     },
     5: {
-      position: 'مترجمة فورية',
+      position: 'مترجم',
       age: 'مواليد 1994',
       interests: 'السفر، القطط، الأفلام',
       dream: 'مترجمة لغة عربية',
@@ -408,7 +408,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-49XX-49XX',
     },
     6: {
-      position: 'مسؤولة الأنشطة النقاشية',
+      position: 'منسق الأنشطة النقاشية',
       age: '17',
       mbti: 'INTP',
       interests: 'الأفلام',
@@ -422,7 +422,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-32XX-80XX',
     },
     7: {
-      position: 'عرض الثقافة',
+      position: 'منسق عرض الثقافة',
       age: '17',
       mbti: 'ESTP',
       interests: 'الرياضة',
@@ -436,7 +436,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-52XX-62XX',
     },
     8: {
-      position: 'أمينة السر',
+      position: 'مسؤول التوثيق',
       age: '18',
       mbti: 'INFP',
       interests: 'القراءة، السباحة، تطوير الذات، الكتابة',
@@ -447,13 +447,13 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-67XX-69XX',
     },
     9: {
-      position: 'التصوير الفوتوغرافي',
+      position: 'منسق التصوير الفوتوغرافي والفيديو',
       age: '17',
       instagram: 'biinu.o',
       phone: '010-92XX-33XX',
     },
     10: {
-      position: 'التصوير',
+      position: 'منسق التصوير الفوتوغرافي والفيديو',
       age: '17',
       mbti: 'ISTP',
       interests: 'السفر، الاستماع للموسيقى',
@@ -465,7 +465,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-58XX-07XX',
     },
     11: {
-      position: 'نائب القائد',
+      position: 'نائب رئيس الفريق',
       age: '17',
       mbti: 'ISTP',
       interests: 'السفر',
@@ -479,7 +479,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-55XX-61XX',
     },
     12: {
-      position: 'العلاقات العامة',
+      position: 'منسق العلاقات العامة',
       age: '22',
       mbti: 'INTJ',
       interests: 'السفر، الرياضة، الطبيعة، التجارب الثقافية',
@@ -493,7 +493,7 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       phone: '010-33XX-60XX',
     },
     13: {
-      position: 'أمينة الصندوق',
+      position: 'أمين الصندوق',
       age: '17',
       mbti: 'ENFP',
       food: 'موتشي بالفواكه',

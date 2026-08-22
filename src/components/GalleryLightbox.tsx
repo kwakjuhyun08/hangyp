@@ -31,6 +31,9 @@ export default function GalleryLightbox({
   const [showMenu, setShowMenu] = useState(false);
   const [editing, setEditing] = useState(false);
   const [captionDraft, setCaptionDraft] = useState(batch.caption);
+  const [photoDraft, setPhotoDraft] = useState(batch.photos);
+  const [dragId, setDragId] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
   // Lazy init reads localStorage once; the parent remounts this component (via `key={batch.id}`)
   // whenever a different post is opened, so this never goes stale across posts.
   const [liked, setLiked] = useState(() => getLikedSet().has(batch.id));
@@ -54,16 +57,40 @@ export default function GalleryLightbox({
     }
   }
 
-  async function saveCaption() {
-    const res = await fetch(`/api/gallery/${batch.id}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ caption: captionDraft }),
+  function movePhotoDraft(sourceId: string, targetId: string) {
+    if (sourceId === targetId) return;
+    setPhotoDraft((cur) => {
+      const next = [...cur];
+      const from = next.findIndex((p) => p.id === sourceId);
+      const to = next.findIndex((p) => p.id === targetId);
+      if (from === -1 || to === -1) return cur;
+      const [moved] = next.splice(from, 1);
+      next.splice(to, 0, moved);
+      return next;
     });
-    if (res.ok) {
-      onChanged({ caption: captionDraft });
+  }
+
+  function removePhotoDraft(id: string) {
+    setPhotoDraft((cur) => (cur.length > 1 ? cur.filter((p) => p.id !== id) : cur));
+  }
+
+  async function saveEdits() {
+    setSaving(true);
+    try {
+      const res = await fetch(`/api/gallery/${batch.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ caption: captionDraft, photoIds: photoDraft.map((p) => p.id) }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        onChanged({ caption: data.caption, photos: data.photos });
+        setPhotoIdx((i) => Math.min(i, data.photos.length - 1));
+        setEditing(false);
+      }
+    } finally {
+      setSaving(false);
     }
-    setEditing(false);
   }
 
   async function deletePost() {
@@ -165,6 +192,7 @@ export default function GalleryLightbox({
                 >
                   <div
                     onClick={() => {
+                      setPhotoDraft(batch.photos);
                       setEditing(true);
                       setShowMenu(false);
                     }}
@@ -271,7 +299,67 @@ export default function GalleryLightbox({
         </div>
 
         {editing ? (
-          <div style={{ padding: '8px 16px 18px', display: 'flex', gap: 8 }}>
+          <div style={{ padding: '8px 16px 18px' }}>
+            {photoDraft.length > 1 && (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 6, marginBottom: 10 }}>
+                {photoDraft.map((p) => (
+                  <div
+                    key={p.id}
+                    draggable
+                    onDragStart={() => setDragId(p.id)}
+                    onDragOver={(e) => e.preventDefault()}
+                    onDrop={(e) => {
+                      e.preventDefault();
+                      if (dragId) movePhotoDraft(dragId, p.id);
+                      setDragId(null);
+                    }}
+                    onDragEnd={() => setDragId(null)}
+                    style={{
+                      position: 'relative',
+                      aspectRatio: '4/5',
+                      borderRadius: 6,
+                      overflow: 'hidden',
+                      background: '#eee',
+                      cursor: 'grab',
+                      opacity: dragId === p.id ? 0.4 : 1,
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        backgroundImage: `url(${p.url})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        pointerEvents: 'none',
+                      }}
+                    />
+                    <div
+                      onClick={() => removePhotoDraft(p.id)}
+                      style={{
+                        position: 'absolute',
+                        top: 3,
+                        right: 3,
+                        width: 18,
+                        height: 18,
+                        borderRadius: '50%',
+                        background: 'rgba(0,0,0,0.6)',
+                        color: '#fff',
+                        fontSize: 11,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'pointer',
+                        lineHeight: 1,
+                      }}
+                    >
+                      ×
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+            <div style={{ display: 'flex', gap: 8 }}>
             <input
               type="text"
               value={captionDraft}
@@ -289,7 +377,8 @@ export default function GalleryLightbox({
               }}
             />
             <button
-              onClick={saveCaption}
+              onClick={saveEdits}
+              disabled={saving}
               style={{
                 background: '#3182F6',
                 color: '#fff',
@@ -298,12 +387,14 @@ export default function GalleryLightbox({
                 padding: '10px 16px',
                 fontSize: 13,
                 fontWeight: 600,
-                cursor: 'pointer',
+                cursor: saving ? 'default' : 'pointer',
                 fontFamily: 'inherit',
+                opacity: saving ? 0.7 : 1,
               }}
             >
               완료
             </button>
+            </div>
           </div>
         ) : (
           <div style={{ padding: '4px 16px 18px', fontSize: 13, color: 'rgba(22,22,21,0.8)' }}>{batch.caption}</div>

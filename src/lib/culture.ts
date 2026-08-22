@@ -45,6 +45,8 @@ export const CULTURE_ITEMS: Record<Lang, CultureItem[]> = {
       desc: 'K-pop은 한국에서 만들어져 전 세계적으로 사랑받는 대중음악 장르로, 중독성 있는 후크송과 화려한 군무가 특징입니다. 2005년 보아와 동방신기가 일본 오리콘 차트 상위권에 오르며 해외 진출의 첫 발판을 마련했고, 2012년 싸이의 \'강남스타일\'이 빌보드 Hot 100에서 2위에 오르며 미국 대중음악 시장에 본격적으로 알려졌습니다. 이후 방탄소년단(BTS)이 빌보드 \'핫 100\' 차트에서 여러 차례 1위를 차지하며 K-pop의 위상을 세계적으로 끌어올렸고, 최근에는 BLACKPINK, Stray Kids, TWICE, NewJeans 등도 해외에서 큰 인기를 얻고 있습니다. K-pop은 음악을 넘어 영화·애니메이션 등 다양한 콘텐츠와 결합하며 더욱 널리 퍼지고 있으며, 해외 팬들이 한국어를 배우거나 한국 음식과 드라마에 관심을 갖는 등 한류 확산의 중심 역할을 하고 있습니다.',
       photo: '/uploads/culture/culture-04.jpg',
       by: 'by. So-jeong Kim',
+      contentSource: "한국민족문화대백과사전 '케이팝' 항목. https://encykorea.aks.ac.kr/Article/E0073667",
+      photoSource: '제출자 직접 촬영 (콘서트 현장, 별도 출처 표기 없음)',
       exploreLink: "한국민족문화대백과사전 '케이팝'. https://encykorea.aks.ac.kr/Article/E0073667",
     },
     {
@@ -180,6 +182,8 @@ export const CULTURE_ITEMS: Record<Lang, CultureItem[]> = {
       desc: '한국의 호칭 문화는 사람과 사람 사이의 \'존중\'과 \'친밀함\'을 표현하는 언어입니다. 한국에서는 상대방과의 나이, 관계, 사회적 위치, 친밀도에 따라 서로 다른 호칭을 사용합니다. 특히 가까운 사이에서는 피가 섞이지 않았더라도 나이가 많은 사람을 \'형, 누나, 언니, 오빠\'라고 부르며 가족과 같은 친밀함을 표현합니다. 반대로 공식적인 자리에서는 \'선생님, 사장님, 기사님\'처럼 상대방의 역할과 위치를 나타내는 호칭을 사용하며 예의를 갖춥니다. 이처럼 누군가를 어떻게 부르는지가 곧 그 사람과 나의 관계를 보여주는 하나의 문화적 표현이 되며, 호칭을 통해 상대를 존중하면서도 때로는 가족처럼 가까이 받아들이는 한국인의 관계 중심적 가치관을 엿볼 수 있습니다.',
       photo: '/uploads/culture/culture-20.jpg',
       by: 'by. Bo-seong Kwon',
+      contentSource: '국립국어원. 「표준언어예절 - 사회에서의 호칭·지칭」.',
+      photoSource: 'AI 생성 이미지 (원본 출처 미기재)',
       exploreLink: '표준언어예절 - 사회에서의 호칭·지칭 (국립국어원)',
     },
     {
@@ -231,6 +235,8 @@ export const CULTURE_ITEMS: Record<Lang, CultureItem[]> = {
       desc: "K-pop is a genre of popular music that originated in Korea and is now loved worldwide, known for catchy hooks and polished group choreography. BoA and TVXQ topping Japan's Oricon chart in 2005 opened the first door overseas, and PSY's \"Gangnam Style\" reaching No. 2 on the Billboard Hot 100 in 2012 introduced K-pop to the US mainstream. BTS then took the K-pop's global standing further with multiple Billboard Hot 100 No. 1s, and groups like BLACKPINK, Stray Kids, TWICE, and NewJeans continue to draw huge audiences abroad. Agencies train trainees for years in singing, dancing, and languages to deliver highly polished performances, and K-pop has expanded beyond music into film and animation, drawing overseas fans toward Korean language, food, and dramas as part of the broader Hallyu wave.",
       photo: '/uploads/culture/culture-04.jpg',
       by: 'by. So-jeong Kim',
+      contentSource: 'Encyclopedia of Korean Culture, entry "K-pop." https://encykorea.aks.ac.kr/Article/E0073667',
+      photoSource: 'Taken by the submitter at a live concert (no further source given)',
       exploreLink: 'Encyclopedia of Korean Culture, entry "K-pop." https://encykorea.aks.ac.kr/Article/E0073667',
     },
     {
@@ -366,6 +372,8 @@ export const CULTURE_ITEMS: Record<Lang, CultureItem[]> = {
       desc: 'Korean address culture is a language for expressing both "respect" and "closeness" between people. Which term you use for someone depends on age, relationship, social standing, and how close you are. Among close friends, it\'s common to call an older person "hyeong," "noona," "eonni," or "oppa" — even with no blood relation — to express family-like warmth. In formal settings, by contrast, people use role-based titles like "seonsaeng-nim" (teacher), "sajang-nim" (boss), or "gisa-nim" (driver) to show respect. In this way, how you address someone becomes a cultural expression of your relationship with them — a window into the Korean value of showing respect while also welcoming people close, almost like family.',
       photo: '/uploads/culture/culture-20.jpg',
       by: 'by. Bo-seong Kwon',
+      contentSource: 'National Institute of Korean Language. "Standard Language Etiquette — Forms of Address in Society."',
+      photoSource: 'AI-generated image (no original source given)',
       exploreLink: 'Standard Language Etiquette — Forms of Address in Society (National Institute of Korean Language)',
     },
     {
@@ -417,6 +425,8 @@ export const CULTURE_ITEMS: Record<Lang, CultureItem[]> = {
       desc: 'الكيبوب هو نوع من الموسيقى الشعبية نشأ في كوريا وأصبح محبوبًا في جميع أنحاء العالم، ويتميز بألحان "hook" جذابة ورقصات جماعية مبهرة. مهّد فوز فرقتي BoA وTVXQ بصدارة قائمة Oricon اليابانية عام 2005 الطريق الأول نحو الخارج، ثم جاء وصول أغنية "Gangnam Style" لسايكو إلى المركز الثاني في قائمة Billboard Hot 100 عام 2012 ليُعرّف السوق الأمريكية بالكيبوب رسميًا. بعدها رفعت فرقة BTS مكانة الكيبوب عالميًا بتصدرها قائمة Billboard Hot 100 عدة مرات، وتحظى اليوم فرق مثل BLACKPINK وStray Kids وTWICE وNewJeans بشعبية كبيرة في الخارج. تدرّب شركات الترفيه المتدربين لسنوات طويلة على الغناء والرقص واللغات لتقديم عروض عالية الجودة، وتوسّع الكيبوب اليوم ليتجاوز الموسيقى إلى الأفلام والرسوم المتحركة، مما دفع المعجبين حول العالم لتعلم اللغة الكورية والاهتمام بالطعام والدراما الكورية ضمن موجة الهاليو (Hallyu) الأوسع.',
       photo: '/uploads/culture/culture-04.jpg',
       by: 'by. So-jeong Kim',
+      contentSource: 'الموسوعة الوطنية للثقافة الكورية، مدخل «الكيبوب». https://encykorea.aks.ac.kr/Article/E0073667',
+      photoSource: 'صورة التقطها مقدّم المحتوى في حفل حي (لم يُذكر مصدر إضافي)',
       exploreLink: 'الموسوعة الوطنية للثقافة الكورية، مدخل «الكيبوب». https://encykorea.aks.ac.kr/Article/E0073667',
     },
     {
@@ -552,6 +562,8 @@ export const CULTURE_ITEMS: Record<Lang, CultureItem[]> = {
       desc: 'ثقافة الألقاب الكورية لغة تعبّر عن "الاحترام" و"القرب" بين الناس في آن واحد. يختلف اللقب المستخدم للشخص حسب العمر والعلاقة والمكانة الاجتماعية ودرجة الألفة. بين الأصدقاء المقربين، من الشائع أن يُنادى الشخص الأكبر سنًا بـ"هيونغ" أو "نونا" أو "أونّي" أو "أوبّا" حتى دون قرابة دم، تعبيرًا عن دفء أسري. أما في المواقف الرسمية، فيستخدم الناس ألقابًا مرتبطة بالدور مثل "سونسِنغ-نيم" (معلم) أو "ساجانغ-نيم" (مدير) أو "غيسا-نيم" (سائق) إظهارًا للاحترام. وهكذا تصبح طريقة مناداة الشخص تعبيرًا ثقافيًا عن العلاقة معه، ونافذة على قيمة كورية أساسية: احترام الآخر مع الترحيب به بقرب يشبه الأسرة أحيانًا.',
       photo: '/uploads/culture/culture-20.jpg',
       by: 'by. Bo-seong Kwon',
+      contentSource: 'المعهد الوطني للغة الكورية. «آداب اللغة المعيارية - صيغ المناداة في المجتمع».',
+      photoSource: 'صورة مولّدة بالذكاء الاصطناعي (لا يوجد مصدر أصلي مذكور)',
       exploreLink: 'آداب اللغة المعيارية - صيغ المناداة في المجتمع (المعهد الوطني للغة الكورية)',
     },
     {

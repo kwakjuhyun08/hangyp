@@ -4,6 +4,7 @@ import { Fragment, useEffect, useRef, useState } from 'react';
 import { useLang } from '@/lib/LangContext';
 import SectionDots from '@/components/SectionDots';
 import { MEMBERS, cardBorder, glowShadow, selectedBorder, selectedGlow, type Member } from '@/lib/members';
+import { TEAM_BIOS, type MemberBio } from '@/lib/team-bios';
 
 const CARD_WIDTH = 230;
 const CARD_GAP = 26;
@@ -21,7 +22,8 @@ const FIELD_KEYS = [
   ['fDream', 'dream'],
   ['fMotto', 'motto'],
   ['fInstagram', 'instagram'],
-] as const;
+  ['fPhone', 'phone'],
+] as const satisfies readonly (readonly [string, keyof MemberBio])[];
 
 const LOOP = [...MEMBERS, ...MEMBERS];
 
@@ -49,7 +51,9 @@ function PortraitPlaceholder() {
 }
 
 export default function TeamSection() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const bios = TEAM_BIOS[lang];
+  const displayName = (m: Member) => (lang === 'ko' ? m.name : m.nameEn);
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const prevSelectedId = useRef<number | null | undefined>(undefined);
 
@@ -150,6 +154,8 @@ export default function TeamSection() {
   }
 
   const selected: Member | null = MEMBERS.find((m) => m.id === selectedId) ?? null;
+  const selectedBio: MemberBio = (selected && bios[selected.id]) || {};
+  const selectedFields = FIELD_KEYS.filter(([, key]) => selectedBio[key]);
 
   return (
     <div id="team">
@@ -208,15 +214,19 @@ export default function TeamSection() {
                 </div>
                 <div className="hg-team-detail-info" style={{ flex: 1 }}>
                   <div className="hg-team-detail-name" style={{ fontWeight: 800, marginBottom: 6 }}>
-                    {selected.name}
+                    {displayName(selected)}
                   </div>
                   <div className="hg-team-detail-grid" style={{ display: 'grid', marginTop: 18 }}>
-                    {FIELD_KEYS.map(([labelKey]) => (
-                      <Fragment key={labelKey}>
-                        <div style={{ color: 'rgba(22,22,21,0.4)' }}>{t[labelKey]}</div>
-                        <div>{t.tbd}</div>
-                      </Fragment>
-                    ))}
+                    {selectedFields.length > 0 ? (
+                      selectedFields.map(([labelKey, bioKey]) => (
+                        <Fragment key={labelKey}>
+                          <div style={{ color: 'rgba(22,22,21,0.4)' }}>{t[labelKey]}</div>
+                          <div>{selectedBio[bioKey]}</div>
+                        </Fragment>
+                      ))
+                    ) : (
+                      <div style={{ color: 'rgba(22,22,21,0.4)', gridColumn: '1 / -1' }}>{t.teamEmpty}</div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -262,8 +272,10 @@ export default function TeamSection() {
                     }}
                   >
                     <PortraitPlaceholder />
-                    <div style={{ fontSize: 17, fontWeight: 700, color: '#161615' }}>{m.name}</div>
-                    <div style={{ fontSize: 12.5, color: 'rgba(22,22,21,0.4)', marginTop: 5 }}>{t.tbd}</div>
+                    <div style={{ fontSize: 17, fontWeight: 700, color: '#161615' }}>{displayName(m)}</div>
+                    <div style={{ fontSize: 12.5, color: 'rgba(22,22,21,0.4)', marginTop: 5 }}>
+                      {bios[m.id]?.position || t.tbd}
+                    </div>
                   </div>
                 ))}
               </div>

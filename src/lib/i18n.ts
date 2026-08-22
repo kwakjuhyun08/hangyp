@@ -68,6 +68,7 @@ export interface Copy {
   fMotto: string;
   fPosition: string;
   fInstagram: string;
+  fPhone: string;
   aboutTitle: string;
   aboutSub: string;
   aboutMeaningTitle: string;
@@ -129,8 +130,8 @@ export interface Copy {
 export const COPY: Record<Lang, Copy> = {
   ko: {
     welcome: 'HanGyp에 오신 것을 환영합니다',
-    gateSub: '명함에 인쇄된 고유 액세스 코드를 입력해 주세요',
-    placeholder: '액세스 코드',
+    gateSub: '명함 속 팀원의 이름을 적어주세요',
+    placeholder: '이름',
     enterBtn: '입장하기',
     error: '코드가 일치하지 않습니다',
     hint: '데모 코드: ONEROOF2026',
@@ -174,6 +175,7 @@ export const COPY: Record<Lang, Copy> = {
     fMotto: '좌우명',
     fPosition: '담당',
     fInstagram: '인스타그램',
+    fPhone: '전화번호',
     aboutTitle: '소개',
     aboutSub: '다른 문화, 한 지붕, 하나의 미래',
     aboutMeaningTitle: '이름에 담긴 의미',
@@ -275,8 +277,8 @@ export const COPY: Record<Lang, Copy> = {
   },
   en: {
     welcome: 'Welcome to HanGyp',
-    gateSub: 'Enter the unique access code printed on your card',
-    placeholder: 'Access code',
+    gateSub: "Enter the name of the team member printed on your card",
+    placeholder: 'Name',
     enterBtn: 'Enter',
     error: 'Code does not match',
     hint: 'Demo code: ONEROOF2026',
@@ -323,6 +325,7 @@ export const COPY: Record<Lang, Copy> = {
     fMotto: 'Motto',
     fPosition: 'Position',
     fInstagram: 'Instagram',
+    fPhone: 'Phone',
     aboutTitle: 'About Us',
     aboutSub: 'Different Cultures, One Roof, One Future',
     aboutMeaningTitle: 'The Meaning Behind Our Name',
@@ -426,8 +429,8 @@ export const COPY: Record<Lang, Copy> = {
   },
   ar: {
     welcome: 'مرحبًا بكم في HanGyp',
-    gateSub: 'أدخل رمز الدخول الفريد المطبوع على بطاقتك',
-    placeholder: 'رمز الدخول',
+    gateSub: 'أدخل اسم عضو الفريق المطبوع على بطاقتك',
+    placeholder: 'الاسم',
     enterBtn: 'دخول',
     error: 'الرمز غير مطابق',
     hint: 'الرمز التجريبي: ONEROOF2026',
@@ -474,6 +477,7 @@ export const COPY: Record<Lang, Copy> = {
     fMotto: 'الشعار',
     fPosition: 'المنصب',
     fInstagram: 'إنستغرام',
+    fPhone: 'الهاتف',
     aboutTitle: 'من نحن',
     aboutSub: 'ثقافات مختلفة، سقف واحد، مستقبل واحد',
     aboutMeaningTitle: 'المعنى وراء اسمنا',

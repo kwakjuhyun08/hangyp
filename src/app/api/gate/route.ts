@@ -1,16 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { createGateToken, GATE_COOKIE_NAME, GATE_COOKIE_MAX_AGE } from '@/lib/gate-session';
+import { MEMBERS } from '@/lib/members';
 
+// Each member's business-card QR code leads here and asks for the name printed
+// on that card, so a leaked/shared card only ever reveals one valid code
+// instead of everyone sharing the same site-wide password.
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
   const code = typeof body?.code === 'string' ? body.code.trim() : '';
-  const expected = process.env.GATE_ACCESS_CODE?.trim();
 
-  if (!expected) {
-    return NextResponse.json({ ok: false, error: 'server_misconfigured' }, { status: 500 });
-  }
-  if (!code || code.toLowerCase() !== expected.toLowerCase()) {
+  const matches = code.length > 0 && MEMBERS.some((m) => m.nameEn.toLowerCase() === code.toLowerCase());
+  if (!matches) {
     return NextResponse.json({ ok: false }, { status: 401 });
   }
 

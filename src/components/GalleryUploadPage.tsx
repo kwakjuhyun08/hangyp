@@ -24,6 +24,7 @@ export default function GalleryUploadPage({
   const [pendingFiles, setPendingFiles] = useState<PendingFile[]>([]);
   const [caption, setCaption] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [dragId, setDragId] = useState<string | null>(null);
 
   useEffect(() => {
     fetch('/api/uploader/me')
@@ -71,6 +72,19 @@ export default function GalleryUploadPage({
 
   function removePending(id: string) {
     setPendingFiles((cur) => cur.filter((f) => f.id !== id));
+  }
+
+  function movePending(sourceId: string, targetId: string) {
+    if (sourceId === targetId) return;
+    setPendingFiles((cur) => {
+      const next = [...cur];
+      const from = next.findIndex((f) => f.id === sourceId);
+      const to = next.findIndex((f) => f.id === targetId);
+      if (from === -1 || to === -1) return cur;
+      const [moved] = next.splice(from, 1);
+      next.splice(to, 0, moved);
+      return next;
+    });
   }
 
   async function submit() {
@@ -138,7 +152,27 @@ export default function GalleryUploadPage({
             {pendingFiles.length > 0 && (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 8, marginBottom: 12 }}>
                 {pendingFiles.map((f) => (
-                  <div key={f.id} style={{ position: 'relative', aspectRatio: '4/5', borderRadius: 6, overflow: 'hidden', background: '#eee' }}>
+                  <div
+                    key={f.id}
+                    draggable
+                    onDragStart={() => setDragId(f.id)}
+                    onDragOver={(e) => e.preventDefault()}
+                    onDrop={(e) => {
+                      e.preventDefault();
+                      if (dragId) movePending(dragId, f.id);
+                      setDragId(null);
+                    }}
+                    onDragEnd={() => setDragId(null)}
+                    style={{
+                      position: 'relative',
+                      aspectRatio: '4/5',
+                      borderRadius: 6,
+                      overflow: 'hidden',
+                      background: '#eee',
+                      cursor: 'grab',
+                      opacity: dragId === f.id ? 0.4 : 1,
+                    }}
+                  >
                     <div
                       style={{
                         width: '100%',
@@ -146,6 +180,7 @@ export default function GalleryUploadPage({
                         backgroundImage: `url(${f.url})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
+                        pointerEvents: 'none',
                       }}
                     />
                     <div
@@ -216,7 +251,7 @@ export default function GalleryUploadPage({
                   onClick={submit}
                   disabled={submitting}
                   style={{
-                    background: '#3182F6',
+                    background: '#16A34A',
                     color: '#fff',
                     border: 'none',
                     borderRadius: 12,

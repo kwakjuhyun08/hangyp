@@ -22,6 +22,7 @@ export interface Phase {
   date: string;
   desc: string;
   photo?: string;
+  hidePhoto?: boolean;
 }
 
 export interface Copy {
@@ -119,10 +120,6 @@ export interface Copy {
   contactInstaVal: string;
   contactYoutubeLabel: string;
   contactYoutubeVal: string;
-  contactPhoneLabel: string;
-  contactPhoneVal: string;
-  contactKakaoLabel: string;
-  contactKakaoVal: string;
   galleryEmpty: string;
   commentPlaceholder: string;
   deleteBtn: string;
@@ -238,15 +235,11 @@ export const COPY: Record<Lang, Copy> = {
     contactSub: '문의사항은 아래 채널로 편하게 연락해 주세요.',
     contactEmailLabel: '이메일',
     contactEmailVal: 'hangyp26@gmail.com',
-    contactEmailNote: '홈페이지 관련 문의는 이 메일로 보내주세요.',
+    contactEmailNote: '홈페이지 관련 문의는 메일로 보내주세요.',
     contactInstaLabel: '인스타그램',
     contactInstaVal: '준비중...',
     contactYoutubeLabel: '유튜브',
     contactYoutubeVal: '준비중...',
-    contactPhoneLabel: '전화번호',
-    contactPhoneVal: '010-1234-5678',
-    contactKakaoLabel: '카카오톡 오픈채팅',
-    contactKakaoVal: 'open.kakao.com/o/gHanGyp2026',
     galleryEmpty: '아직 업로드된 사진이 없습니다.',
     commentPlaceholder: '코멘트를 입력하세요',
     deleteBtn: '삭제',
@@ -257,7 +250,7 @@ export const COPY: Record<Lang, Copy> = {
         desc: '세계시민교육, 글로벌 에티켓 교육, 기참가자와의 대화, 역할 분담 및 계획 수립',
         photo: '/uploads/timeline/kickoff-1.jpg',
       },
-      { title: '2차 사전 교육 (온라인)', date: '8월 9일', desc: '소그룹 토의토론 결과 공유' },
+      { title: '2차 사전 교육 (온라인)', date: '8월 9일', desc: '소그룹 토의토론 결과 공유', hidePhoto: true },
     ],
   },
   en: {
@@ -378,10 +371,6 @@ export const COPY: Record<Lang, Copy> = {
     contactInstaVal: 'Coming soon...',
     contactYoutubeLabel: 'YouTube',
     contactYoutubeVal: 'Coming soon...',
-    contactPhoneLabel: 'Phone',
-    contactPhoneVal: '+82 10-1234-5678',
-    contactKakaoLabel: 'KakaoTalk Open Chat',
-    contactKakaoVal: 'open.kakao.com/o/gHanGyp2026',
     galleryEmpty: 'No photos uploaded yet.',
     commentPlaceholder: 'Add a comment',
     deleteBtn: 'Delete',
@@ -392,7 +381,7 @@ export const COPY: Record<Lang, Copy> = {
         desc: 'Global citizenship education, global etiquette training, conversation with past participants, role assignment and planning',
         photo: '/uploads/timeline/kickoff-1.jpg',
       },
-      { title: '2nd Preparatory Session (Online)', date: 'Aug 9', desc: 'Sharing small-group discussion results' },
+      { title: '2nd Preparatory Session (Online)', date: 'Aug 9', desc: 'Sharing small-group discussion results', hidePhoto: true },
     ],
   },
   ar: {
@@ -511,10 +500,6 @@ export const COPY: Record<Lang, Copy> = {
     contactInstaVal: 'قريبًا...',
     contactYoutubeLabel: 'يوتيوب',
     contactYoutubeVal: 'قريبًا...',
-    contactPhoneLabel: 'الهاتف',
-    contactPhoneVal: '+82 10-1234-5678',
-    contactKakaoLabel: 'محادثة كاكاو المفتوحة',
-    contactKakaoVal: 'open.kakao.com/o/gHanGyp2026',
     galleryEmpty: 'لا توجد صور مرفوعة بعد.',
     commentPlaceholder: 'أضف تعليقًا',
     deleteBtn: 'حذف',
@@ -525,7 +510,7 @@ export const COPY: Record<Lang, Copy> = {
         desc: 'تعليم المواطنة العالمية، تدريب على آداب السلوك العالمية، حوار مع المشاركين السابقين، توزيع الأدوار ووضع الخطط',
         photo: '/uploads/timeline/kickoff-1.jpg',
       },
-      { title: 'التدريب التحضيري الثاني (عبر الإنترنت)', date: '9 أغسطس', desc: 'مشاركة نتائج نقاش المجموعات الصغيرة' },
+      { title: 'التدريب التحضيري الثاني (عبر الإنترنت)', date: '9 أغسطس', desc: 'مشاركة نتائج نقاش المجموعات الصغيرة', hidePhoto: true },
     ],
   },
 };

@@ -10,8 +10,6 @@ export default function ContactSection() {
     { label: t.contactEmailLabel, value: t.contactEmailVal, note: t.contactEmailNote },
     { label: t.contactInstaLabel, value: t.contactInstaVal },
     { label: t.contactYoutubeLabel, value: t.contactYoutubeVal },
-    { label: t.contactPhoneLabel, value: t.contactPhoneVal },
-    { label: t.contactKakaoLabel, value: t.contactKakaoVal },
   ];
 
   return (

@@ -202,7 +202,7 @@ export const CULTURE_ITEMS: Record<Lang, CultureItem[]> = {
       by: 'by. Si-won Song',
       contentSource: '2026.06.29. Enkostay blog. 「한국 대중목욕탕 이용 방법: 첫 찜질방 방문을 위한 완벽한 가이드」. https://stay.enko.kr/blog/ko/%ED%95%9C%EA%B5%AD-%EB%8C%80%EC%A4%91%EB%AA%A9%EC%9A%95%ED%83%95-%EC%9D%B4%EC%9A%A9-%EB%B0%A9%EB%B2%95-%EC%B2%AB-%EC%B0%9C%EC%A7%88%EB%B0%A9-%EB%B0%A9%EB%AC%B8%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%99%84%EB%B2%BD%ED%95%9C-%EA%B0%80%EC%9D%B4%EB%93%9C/',
       photoSource: '2026.06.29. Enkostay blog. 「한국 대중목욕탕 이용 방법: 첫 찜질방 방문을 위한 완벽한 가이드」. https://stay.enko.kr/blog/ko/%ED%95%9C%EA%B5%AD-%EB%8C%80%EC%A4%91%EB%AA%A9%EC%9A%95%ED%83%95-%EC%9D%B4%EC%9A%A9-%EB%B0%A9%EB%B2%95-%EC%B2%AB-%EC%B0%9C%EC%A7%88%EB%B0%A9-%EB%B0%A9%EB%AC%B8%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%99%84%EB%B2%BD%ED%95%9C-%EA%B0%80%EC%9D%B4%EB%93%9C/',
-      exploreLink: 'https://ichpedia.org/ich/detail?id=43418; https://stay.enko.kr/blog/ko/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC/%EB%AC%B8%ED%99%94/',
+      exploreLink: 'https://ichpedia.org/ich/detail?id=43418\nhttps://stay.enko.kr/blog/ko/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC/%EB%AC%B8%ED%99%94/',
     },
     {
       title: '한국의 급식',
@@ -401,7 +401,7 @@ export const CULTURE_ITEMS: Record<Lang, CultureItem[]> = {
       by: 'by. Si-won Song',
       contentSource: 'Enkostay blog. (2026.06.29). "How to Use a Korean Bathhouse: A Complete Guide to Your First Jjimjilbang Visit." https://stay.enko.kr/blog/ko/%ED%95%9C%EA%B5%AD-%EB%8C%80%EC%A4%91%EB%AA%A9%EC%9A%95%ED%83%95-%EC%9D%B4%EC%9A%A9-%EB%B0%A9%EB%B2%95-%EC%B2%AB-%EC%B0%9C%EC%A7%88%EB%B0%A9-%EB%B0%A9%EB%AC%B8%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%99%84%EB%B2%BD%ED%95%9C-%EA%B0%80%EC%9D%B4%EB%93%9C/',
       photoSource: 'Enkostay blog. (2026.06.29). "How to Use a Korean Bathhouse: A Complete Guide to Your First Jjimjilbang Visit." https://stay.enko.kr/blog/ko/%ED%95%9C%EA%B5%AD-%EB%8C%80%EC%A4%91%EB%AA%A9%EC%9A%95%ED%83%95-%EC%9D%B4%EC%9A%A9-%EB%B0%A9%EB%B2%95-%EC%B2%AB-%EC%B0%9C%EC%A7%88%EB%B0%A9-%EB%B0%A9%EB%AC%B8%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%99%84%EB%B2%BD%ED%95%9C-%EA%B0%80%EC%9D%B4%EB%93%9C/',
-      exploreLink: 'https://ichpedia.org/ich/detail?id=43418; https://stay.enko.kr/blog/ko/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC/%EB%AC%B8%ED%99%94/',
+      exploreLink: 'https://ichpedia.org/ich/detail?id=43418\nhttps://stay.enko.kr/blog/ko/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC/%EB%AC%B8%ED%99%94/',
     },
     {
       title: 'Korean School Lunches',
@@ -600,7 +600,7 @@ export const CULTURE_ITEMS: Record<Lang, CultureItem[]> = {
       by: 'by. Si-won Song',
       contentSource: 'مدونة Enkostay. (2026.06.29). «كيفية استخدام الحمام الكوري: دليل شامل لأول زيارة إلى تشيمجيلبانغ». https://stay.enko.kr/blog/ko/%ED%95%9C%EA%B5%AD-%EB%8C%80%EC%A4%91%EB%AA%A9%EC%9A%95%ED%83%95-%EC%9D%B4%EC%9A%A9-%EB%B0%A9%EB%B2%95-%EC%B2%AB-%EC%B0%9C%EC%A7%88%EB%B0%A9-%EB%B0%A9%EB%AC%B8%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%99%84%EB%B2%BD%ED%95%9C-%EA%B0%80%EC%9D%B4%EB%93%9C/',
       photoSource: 'مدونة Enkostay. (2026.06.29). «كيفية استخدام الحمام الكوري: دليل شامل لأول زيارة إلى تشيمجيلبانغ». https://stay.enko.kr/blog/ko/%ED%95%9C%EA%B5%AD-%EB%8C%80%EC%A4%91%EB%AA%A9%EC%9A%95%ED%83%95-%EC%9D%B4%EC%9A%A9-%EB%B0%A9%EB%B2%95-%EC%B2%AB-%EC%B0%9C%EC%A7%88%EB%B0%A9-%EB%B0%A9%EB%AC%B8%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%99%84%EB%B2%BD%ED%95%9C-%EA%B0%80%EC%9D%B4%EB%93%9C/',
-      exploreLink: 'https://ichpedia.org/ich/detail?id=43418; https://stay.enko.kr/blog/ko/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC/%EB%AC%B8%ED%99%94/',
+      exploreLink: 'https://ichpedia.org/ich/detail?id=43418\nhttps://stay.enko.kr/blog/ko/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC/%EB%AC%B8%ED%99%94/',
     },
     {
       title: 'وجبات الغداء المدرسية الكورية',

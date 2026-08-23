@@ -51,7 +51,7 @@ function RevealRow({ label, value }: { label: string; value: string }) {
         <span style={{ fontSize: 12, color: 'rgba(22,22,21,0.35)' }}>{open ? '▲' : '▼'}</span>
       </div>
       {open && (
-        <div style={{ marginTop: 10, fontSize: 13, lineHeight: 1.7, color: 'rgba(22,22,21,0.75)', wordBreak: 'break-word' }}>
+        <div style={{ marginTop: 10, fontSize: 13, lineHeight: 1.7, color: 'rgba(22,22,21,0.75)', wordBreak: 'break-word', whiteSpace: 'pre-wrap' }}>
           {linkify(value)}
         </div>
       )}

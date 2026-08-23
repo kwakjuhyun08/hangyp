@@ -8,8 +8,8 @@ export default function ContactSection() {
 
   const channels = [
     { label: t.contactEmailLabel, value: t.contactEmailVal, note: t.contactEmailNote },
-    { label: t.contactInstaLabel, value: t.contactInstaVal },
-    { label: t.contactYoutubeLabel, value: t.contactYoutubeVal },
+    { label: t.contactInstaLabel, value: t.contactInstaVal, href: 'https://www.instagram.com/hangyp.2026/?utm_source=ig_web_button_share_sheet' },
+    { label: t.contactYoutubeLabel, value: t.contactYoutubeVal, href: 'https://youtube.com/@hangyp?si=ZSSzbWIHP3j_VUOo' },
   ];
 
   return (
@@ -41,7 +41,20 @@ export default function ContactSection() {
                 {c.label}
               </div>
               <div style={{ minWidth: 0, flex: 1 }}>
-                <div className="hg-contact-value" style={{ fontSize: 15, color: '#161615', wordBreak: 'break-word' }}>{c.value}</div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <div className="hg-contact-value" style={{ fontSize: 15, color: '#161615', wordBreak: 'break-word' }}>{c.value}</div>
+                  {c.href && (
+                    <a
+                      href={c.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={c.label}
+                      style={{ fontSize: 14, color: '#3182F6', textDecoration: 'none', flexShrink: 0, lineHeight: 1 }}
+                    >
+                      🔗
+                    </a>
+                  )}
+                </div>
                 {c.note && (
                   <div style={{ fontSize: 12.5, color: 'rgba(22,22,21,0.45)', marginTop: 4 }}>{c.note}</div>
                 )}

@@ -7,8 +7,9 @@ export default function ContactSection() {
   const { t } = useLang();
 
   const channels = [
-    { label: t.contactEmailLabel, value: t.contactEmailVal },
+    { label: t.contactEmailLabel, value: t.contactEmailVal, note: t.contactEmailNote },
     { label: t.contactInstaLabel, value: t.contactInstaVal },
+    { label: t.contactYoutubeLabel, value: t.contactYoutubeVal },
     { label: t.contactPhoneLabel, value: t.contactPhoneVal },
     { label: t.contactKakaoLabel, value: t.contactKakaoVal },
   ];
@@ -41,7 +42,12 @@ export default function ContactSection() {
               <div className="hg-contact-label" style={{ fontSize: 13, fontWeight: 700, color: 'rgba(22,22,21,0.4)', flexShrink: 0 }}>
                 {c.label}
               </div>
-              <div className="hg-contact-value" style={{ fontSize: 15, color: '#161615', wordBreak: 'break-word', minWidth: 0, flex: 1 }}>{c.value}</div>
+              <div style={{ minWidth: 0, flex: 1 }}>
+                <div className="hg-contact-value" style={{ fontSize: 15, color: '#161615', wordBreak: 'break-word' }}>{c.value}</div>
+                {c.note && (
+                  <div style={{ fontSize: 12.5, color: 'rgba(22,22,21,0.45)', marginTop: 4 }}>{c.note}</div>
+                )}
+              </div>
             </div>
           ))}
         </div>

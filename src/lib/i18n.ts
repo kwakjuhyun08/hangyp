@@ -114,8 +114,11 @@ export interface Copy {
   contactSub: string;
   contactEmailLabel: string;
   contactEmailVal: string;
+  contactEmailNote: string;
   contactInstaLabel: string;
   contactInstaVal: string;
+  contactYoutubeLabel: string;
+  contactYoutubeVal: string;
   contactPhoneLabel: string;
   contactPhoneVal: string;
   contactKakaoLabel: string;
@@ -234,9 +237,12 @@ export const COPY: Record<Lang, Copy> = {
     contactTitle: '연락처',
     contactSub: '문의사항은 아래 채널로 편하게 연락해 주세요.',
     contactEmailLabel: '이메일',
-    contactEmailVal: 'hangyp2026@gmail.com',
+    contactEmailVal: 'hangyp26@gmail.com',
+    contactEmailNote: '홈페이지 관련 문의는 이 메일로 보내주세요.',
     contactInstaLabel: '인스타그램',
-    contactInstaVal: '@hangyp.2026',
+    contactInstaVal: '준비중...',
+    contactYoutubeLabel: '유튜브',
+    contactYoutubeVal: '준비중...',
     contactPhoneLabel: '전화번호',
     contactPhoneVal: '010-1234-5678',
     contactKakaoLabel: '카카오톡 오픈채팅',
@@ -366,9 +372,12 @@ export const COPY: Record<Lang, Copy> = {
     contactTitle: 'Contact',
     contactSub: 'Feel free to reach out through any of the channels below.',
     contactEmailLabel: 'Email',
-    contactEmailVal: 'hangyp2026@gmail.com',
+    contactEmailVal: 'hangyp26@gmail.com',
+    contactEmailNote: 'For website-related inquiries, please email us here.',
     contactInstaLabel: 'Instagram',
-    contactInstaVal: '@hangyp.2026',
+    contactInstaVal: 'Coming soon...',
+    contactYoutubeLabel: 'YouTube',
+    contactYoutubeVal: 'Coming soon...',
     contactPhoneLabel: 'Phone',
     contactPhoneVal: '+82 10-1234-5678',
     contactKakaoLabel: 'KakaoTalk Open Chat',
@@ -496,9 +505,12 @@ export const COPY: Record<Lang, Copy> = {
     contactTitle: 'اتصل بنا',
     contactSub: 'يسعدنا تواصلكم معنا عبر القنوات التالية.',
     contactEmailLabel: 'البريد الإلكتروني',
-    contactEmailVal: 'hangyp2026@gmail.com',
+    contactEmailVal: 'hangyp26@gmail.com',
+    contactEmailNote: 'للاستفسارات المتعلقة بالموقع الإلكتروني، يرجى مراسلتنا على هذا البريد.',
     contactInstaLabel: 'إنستغرام',
-    contactInstaVal: '@hangyp.2026',
+    contactInstaVal: 'قريبًا...',
+    contactYoutubeLabel: 'يوتيوب',
+    contactYoutubeVal: 'قريبًا...',
     contactPhoneLabel: 'الهاتف',
     contactPhoneVal: '+82 10-1234-5678',
     contactKakaoLabel: 'محادثة كاكاو المفتوحة',

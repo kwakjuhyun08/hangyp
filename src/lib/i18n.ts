@@ -86,6 +86,7 @@ export interface Copy {
   cultureSub: string;
   cultureBackBtn: string;
   cultureContentSource: string;
+  cultureContentRef: string;
   culturePhotoSource: string;
   cultureExploreLink: string;
   galleryTitle: string;
@@ -206,6 +207,7 @@ export const COPY: Record<Lang, Copy> = {
     cultureSub: '이집트 청소년들에게 소개하고 싶은 한국의 23가지 모습',
     cultureBackBtn: '← 문화로 돌아가기',
     cultureContentSource: '내용 출처',
+    cultureContentRef: '내용 참고 자료',
     culturePhotoSource: '사진 출처',
     cultureExploreLink: '추가 탐구 자료',
     galleryTitle: '갤러리',
@@ -337,6 +339,7 @@ export const COPY: Record<Lang, Copy> = {
     cultureSub: '23 sides of Korea we want Egyptian youth to know',
     cultureBackBtn: '← Back to Culture',
     cultureContentSource: 'Content source',
+    cultureContentRef: 'Content reference',
     culturePhotoSource: 'Photo source',
     cultureExploreLink: 'Explore further',
     galleryTitle: 'Gallery',
@@ -466,6 +469,7 @@ export const COPY: Record<Lang, Copy> = {
     cultureSub: '23 جانبًا من كوريا نودّ أن يتعرف عليها شباب مصر',
     cultureBackBtn: '← العودة إلى الثقافة',
     cultureContentSource: 'مصدر المحتوى',
+    cultureContentRef: 'مرجع المحتوى',
     culturePhotoSource: 'مصدر الصورة',
     cultureExploreLink: 'لمزيد من الاستكشاف',
     galleryTitle: 'المعرض',

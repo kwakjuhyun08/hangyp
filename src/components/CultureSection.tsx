@@ -7,6 +7,9 @@ import SectionDots from '@/components/SectionDots';
 import { CULTURE_ITEMS } from '@/lib/culture';
 
 const URL_RE = /(https?:\/\/[^\s)]+)/g;
+// Content credited to the submitter themself (as opposed to an external
+// citation) keeps the "content source" label rather than "content reference".
+const SELF_AUTHORED_RE = /작성자 본인|submitter|كاتب المحتوى/i;
 
 function linkify(text: string) {
   const parts = text.split(URL_RE);
@@ -138,7 +141,12 @@ export default function CultureSection() {
               <div style={{ fontSize: 15.5, lineHeight: 1.8, color: 'rgba(22,22,21,0.8)', marginBottom: 8, whiteSpace: 'pre-wrap' }}>{selected.desc}</div>
 
               <div style={{ marginTop: 24 }}>
-                {selected.contentSource && <RevealRow label={t.cultureContentSource} value={selected.contentSource} />}
+                {selected.contentSource && (
+                  <RevealRow
+                    label={SELF_AUTHORED_RE.test(selected.contentSource) ? t.cultureContentSource : t.cultureContentRef}
+                    value={selected.contentSource}
+                  />
+                )}
                 {selected.photoSource && <RevealRow label={t.culturePhotoSource} value={selected.photoSource} />}
                 {selected.exploreLink && <RevealRow label={t.cultureExploreLink} value={selected.exploreLink} />}
               </div>

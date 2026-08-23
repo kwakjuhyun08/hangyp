@@ -25,6 +25,11 @@ export const MEMBERS: Member[] = [
   { id: 13, name: '최수아', nameEn: 'Su-A Choi', hue: 350, c: 0.13, l: 80 },
 ];
 
+// Delegation leaders (단장/부단장) — not shown as team cards on the site (the
+// team page intentionally stays at the 13 members above), but their
+// business-card QR codes should still unlock the gate like everyone else's.
+export const EXTRA_GATE_NAMES: string[] = ['Chi-soon Son', 'Jong-hyun Park'];
+
 export function cardBorder(m: Member): string {
   return `oklch(${Math.max(m.l, 55)}% ${Math.min(m.c * 1.4, 0.32)} ${m.hue} / 0.6)`;
 }

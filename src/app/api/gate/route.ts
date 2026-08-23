@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { createGateToken, GATE_COOKIE_NAME, GATE_COOKIE_MAX_AGE } from '@/lib/gate-session';
-import { MEMBERS } from '@/lib/members';
+import { EXTRA_GATE_NAMES, MEMBERS } from '@/lib/members';
 
 // Each member's business-card QR code leads here and asks for the name printed
 // on that card, so a leaked/shared card only ever reveals one valid code
@@ -10,7 +10,8 @@ export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
   const code = typeof body?.code === 'string' ? body.code : '';
 
-  const matches = code.length > 0 && MEMBERS.some((m) => m.nameEn === code);
+  const matches =
+    code.length > 0 && (MEMBERS.some((m) => m.nameEn === code) || EXTRA_GATE_NAMES.includes(code));
   if (!matches) {
     return NextResponse.json({ ok: false }, { status: 401 });
   }

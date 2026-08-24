@@ -250,7 +250,7 @@ export const COPY: Record<Lang, Copy> = {
         desc: '세계시민교육, 글로벌 에티켓 교육, 기참가자와의 대화, 역할 분담 및 계획 수립',
         photo: '/uploads/timeline/kickoff-1.jpg',
       },
-      { title: '2차 사전 교육 (온라인)', date: '8월 9일', desc: '소그룹 토의토론 결과 공유', hidePhoto: true },
+      { title: '2차 사전 교육 (온라인)', date: '8월 9일', desc: '소그룹 토의토론 결과 공유', photo: '/uploads/timeline/kickoff-2.jpg' },
     ],
   },
   en: {
@@ -381,7 +381,7 @@ export const COPY: Record<Lang, Copy> = {
         desc: 'Global citizenship education, global etiquette training, conversation with past participants, role assignment and planning',
         photo: '/uploads/timeline/kickoff-1.jpg',
       },
-      { title: '2nd Preparatory Session (Online)', date: 'Aug 9', desc: 'Sharing small-group discussion results', hidePhoto: true },
+      { title: '2nd Preparatory Session (Online)', date: 'Aug 9', desc: 'Sharing small-group discussion results', photo: '/uploads/timeline/kickoff-2.jpg' },
     ],
   },
   ar: {
@@ -510,7 +510,7 @@ export const COPY: Record<Lang, Copy> = {
         desc: 'تعليم المواطنة العالمية، تدريب على آداب السلوك العالمية، حوار مع المشاركين السابقين، توزيع الأدوار ووضع الخطط',
         photo: '/uploads/timeline/kickoff-1.jpg',
       },
-      { title: 'التدريب التحضيري الثاني (عبر الإنترنت)', date: '9 أغسطس', desc: 'مشاركة نتائج نقاش المجموعات الصغيرة', hidePhoto: true },
+      { title: 'التدريب التحضيري الثاني (عبر الإنترنت)', date: '9 أغسطس', desc: 'مشاركة نتائج نقاش المجموعات الصغيرة', photo: '/uploads/timeline/kickoff-2.jpg' },
     ],
   },
 };

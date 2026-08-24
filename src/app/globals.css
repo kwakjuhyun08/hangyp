@@ -191,6 +191,13 @@ a:hover {
     min-width: 0;
     width: 100%;
   }
+  .hg-team-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 2px 0;
+  }
+  .hg-team-detail-grid > div:nth-child(odd) {
+    margin-top: 10px;
+  }
 }
 
 .hg-header {

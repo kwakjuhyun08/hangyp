@@ -3,6 +3,9 @@
 import { useLang } from '@/lib/LangContext';
 import SectionDots from '@/components/SectionDots';
 
+// Temporarily hidden per request — flip back to true to restore.
+const SHOW_SLOGAN_AND_MVV = false;
+
 const CARD_STYLE: React.CSSProperties = {
   boxSizing: 'border-box',
   background: '#fff',
@@ -33,54 +36,56 @@ export default function AboutSection() {
           >
             {t.aboutTitle}
           </div>
-          <div style={{ fontSize: 17, color: 'rgba(22,22,21,0.6)' }}>{t.aboutSub}</div>
+          {SHOW_SLOGAN_AND_MVV && <div style={{ fontSize: 17, color: 'rgba(22,22,21,0.6)' }}>{t.aboutSub}</div>}
         </div>
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))',
-            gap: 20,
-            maxWidth: 1080,
-            margin: '0 auto 100px',
-          }}
-        >
-          <div style={CARD_STYLE}>
-            <div style={{ fontSize: 18, fontWeight: 700, color: '#161615', marginBottom: 12, letterSpacing: '-0.01em' }}>
-              {t.missionTitle}
+        {SHOW_SLOGAN_AND_MVV && (
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))',
+              gap: 20,
+              maxWidth: 1080,
+              margin: '0 auto 100px',
+            }}
+          >
+            <div style={CARD_STYLE}>
+              <div style={{ fontSize: 18, fontWeight: 700, color: '#161615', marginBottom: 12, letterSpacing: '-0.01em' }}>
+                {t.missionTitle}
+              </div>
+              <div style={{ fontSize: 16, lineHeight: 1.75, color: '#4E5968' }}>{t.missionText}</div>
             </div>
-            <div style={{ fontSize: 16, lineHeight: 1.75, color: '#4E5968' }}>{t.missionText}</div>
+            <div style={CARD_STYLE}>
+              <div style={{ fontSize: 18, fontWeight: 700, color: '#161615', marginBottom: 12, letterSpacing: '-0.01em' }}>
+                {t.visionTitle}
+              </div>
+              <div style={{ fontSize: 16, lineHeight: 1.75, color: '#4E5968' }}>{t.visionText}</div>
+            </div>
+            <div style={CARD_STYLE}>
+              <div style={{ fontSize: 18, fontWeight: 700, color: '#161615', marginBottom: 16, letterSpacing: '-0.01em' }}>
+                {t.valuesTitle}
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                {t.values.map((v) => (
+                  <div
+                    key={v}
+                    style={{
+                      background: '#F2F4F6',
+                      borderRadius: 12,
+                      padding: '8px 14px',
+                      fontSize: 14,
+                      fontWeight: 600,
+                      color: '#4E5968',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {v}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-          <div style={CARD_STYLE}>
-            <div style={{ fontSize: 18, fontWeight: 700, color: '#161615', marginBottom: 12, letterSpacing: '-0.01em' }}>
-              {t.visionTitle}
-            </div>
-            <div style={{ fontSize: 16, lineHeight: 1.75, color: '#4E5968' }}>{t.visionText}</div>
-          </div>
-          <div style={CARD_STYLE}>
-            <div style={{ fontSize: 18, fontWeight: 700, color: '#161615', marginBottom: 16, letterSpacing: '-0.01em' }}>
-              {t.valuesTitle}
-            </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-              {t.values.map((v) => (
-                <div
-                  key={v}
-                  style={{
-                    background: '#F2F4F6',
-                    borderRadius: 12,
-                    padding: '8px 14px',
-                    fontSize: 14,
-                    fontWeight: 600,
-                    color: '#4E5968',
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  {v}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        )}
 
         <div style={{ maxWidth: 1080, margin: '0 auto 100px', textAlign: 'center' }}>
           <div style={{ fontSize: 26, fontWeight: 700, letterSpacing: '-0.02em', color: '#161615', marginBottom: 16 }}>
@@ -90,10 +95,7 @@ export default function AboutSection() {
             {t.whyText}
           </div>
 
-          <div style={{ fontSize: 26, fontWeight: 700, letterSpacing: '-0.02em', color: '#161615', marginBottom: 20, marginTop: 80 }}>
-            {t.aboutMeaningTitle}
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: 14, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 14, flexWrap: 'wrap', marginTop: 80 }}>
             {t.aboutMeaning.map((m) => (
               <div
                 key={m.k}

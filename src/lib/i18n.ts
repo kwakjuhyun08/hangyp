@@ -191,7 +191,7 @@ export const COPY: Record<Lang, Copy> = {
     values: ['존중', '개방성', '협력', '책임감'],
     whyTitle: '왜 HanGyp인가?',
     whyText:
-      'HanGyp는 2026 한–이집트 청소년 교류 프로그램에 참가하는 대한민국 청소년 대표단입니다. 서로 다른 곳에서 온 우리가 하나의 지붕 아래 모여, 문화를 나누고 미래를 함께 그린다는 뜻을 담았습니다.',
+      'HanGyp는 2026 한–이집트 청소년 교류 프로그램에 참가하는 대한민국 청소년 대표단입니다. 한국과 이집트의 뜻을 담고 하나의 집 아래서 하나의 팀이라는 의미를 담고 있습니다.',
     timelineTitle: '타임라인',
     timeline: [
       { label: '참가자 모집 및 지원', desc: '전국의 청소년을 대상으로 참가자를 모집하고 지원서를 받았습니다.' },
@@ -322,7 +322,7 @@ export const COPY: Record<Lang, Copy> = {
     values: ['Respect', 'Openness', 'Collaboration', 'Responsibility'],
     whyTitle: 'Why HanGyp?',
     whyText:
-      'HanGyp is the Korean youth delegation to the 2026 Korea–Egypt Youth Exchange Program. Coming from different places, we gather under one roof to share culture and shape the future together.',
+      'HanGyp is the Korean youth delegation to the 2026 Korea–Egypt Youth Exchange Program. It carries the meaning of Korea and Egypt together, standing for one team under one house.',
     timelineTitle: 'Timeline',
     timeline: [
       { label: 'Recruitment & Applications', desc: 'We recruited participants nationwide and received applications from youth across the country.' },
@@ -451,7 +451,7 @@ export const COPY: Record<Lang, Copy> = {
     values: ['الاحترام', 'الانفتاح', 'التعاون', 'المسؤولية'],
     whyTitle: 'لماذا HanGyp؟',
     whyText:
-      'HanGyp هو وفد الشباب الكوري في برنامج تبادل الشباب الكوري المصري 2026. قادمون من أماكن مختلفة، نجتمع تحت سقف واحد لمشاركة الثقافة وبناء المستقبل معًا.',
+      'HanGyp هو وفد الشباب الكوري في برنامج تبادل الشباب الكوري المصري 2026. يحمل الاسم معنى كوريا ومصر معًا، ويرمز إلى فريق واحد تحت بيت واحد.',
     timelineTitle: 'الجدول الزمني',
     timeline: [
       { label: 'التقديم والتسجيل', desc: 'قمنا بتجنيد المشاركين على مستوى البلاد واستلمنا طلبات التقديم من الشباب.' },

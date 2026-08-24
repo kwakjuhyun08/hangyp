@@ -2,8 +2,13 @@
 
 import { useLang } from '@/lib/LangContext';
 
+// Temporarily hidden per request — flip back to true to restore.
+const SHOW_PHILOSOPHY = false;
+
 export default function PhilosophySection() {
   const { t } = useLang();
+
+  if (!SHOW_PHILOSOPHY) return null;
 
   return (
     <section

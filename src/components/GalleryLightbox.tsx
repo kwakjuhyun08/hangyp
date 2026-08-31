@@ -1,7 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import type { GalleryBatch } from '@/components/GallerySection';
+
+type DraftPhoto = GalleryBatch['photos'][number];
 
 const LIKED_KEY = 'hg_gallery_liked';
 
@@ -12,6 +14,109 @@ function getLikedSet(): Set<string> {
 
 function setLikedSet(set: Set<string>) {
   window.localStorage.setItem(LIKED_KEY, JSON.stringify([...set]));
+}
+
+// Drag-to-reposition the visible focal point of a photo within its fixed-aspect
+// crop. The frame shows the photo exactly as it will appear in the grid/lightbox
+// (background-position driven by posX/posY); dragging moves the image the same
+// direction as the pointer, like Instagram/Facebook's photo repositioning.
+function RepositionModal({
+  photo,
+  onChange,
+  onClose,
+}: {
+  photo: DraftPhoto;
+  onChange: (posX: number, posY: number) => void;
+  onClose: () => void;
+}) {
+  const frameRef = useRef<HTMLDivElement>(null);
+  const dragState = useRef<{ startX: number; startY: number; posX: number; posY: number } | null>(null);
+  const [pos, setPos] = useState({ posX: photo.posX, posY: photo.posY });
+
+  function onPointerDown(e: React.PointerEvent<HTMLDivElement>) {
+    const frame = frameRef.current;
+    if (!frame) return;
+    dragState.current = { startX: e.clientX, startY: e.clientY, posX: pos.posX, posY: pos.posY };
+    frame.setPointerCapture(e.pointerId);
+  }
+
+  function onPointerMove(e: React.PointerEvent<HTMLDivElement>) {
+    const frame = frameRef.current;
+    const drag = dragState.current;
+    if (!frame || !drag) return;
+    const rect = frame.getBoundingClientRect();
+    const dx = e.clientX - drag.startX;
+    const dy = e.clientY - drag.startY;
+    const nextX = Math.max(0, Math.min(100, drag.posX - (dx / rect.width) * 100));
+    const nextY = Math.max(0, Math.min(100, drag.posY - (dy / rect.height) * 100));
+    setPos({ posX: nextX, posY: nextY });
+    onChange(nextX, nextY);
+  }
+
+  function onPointerUp(e: React.PointerEvent<HTMLDivElement>) {
+    dragState.current = null;
+    frameRef.current?.releasePointerCapture(e.pointerId);
+  }
+
+  return (
+    <div
+      onClick={(e) => {
+        e.stopPropagation();
+        onClose();
+      }}
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 60,
+        background: 'rgba(0,0,0,0.85)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 24,
+        boxSizing: 'border-box',
+      }}
+    >
+      <div onClick={(e) => e.stopPropagation()} style={{ width: 'min(92vw,360px)', textAlign: 'center' }}>
+        <div style={{ color: '#fff', fontSize: 13, marginBottom: 12 }}>드래그해서 사진 위치를 조정하세요</div>
+        <div
+          ref={frameRef}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerUp}
+          style={{
+            position: 'relative',
+            width: '100%',
+            aspectRatio: '4/5',
+            borderRadius: 14,
+            overflow: 'hidden',
+            backgroundImage: `url(${photo.url})`,
+            backgroundSize: 'cover',
+            backgroundPosition: `${pos.posX}% ${pos.posY}%`,
+            cursor: 'grab',
+            touchAction: 'none',
+            boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
+          }}
+        />
+        <button
+          onClick={onClose}
+          style={{
+            marginTop: 16,
+            background: '#3182F6',
+            color: '#fff',
+            border: 'none',
+            borderRadius: 10,
+            padding: '10px 24px',
+            fontSize: 13,
+            fontWeight: 600,
+            cursor: 'pointer',
+            fontFamily: 'inherit',
+          }}
+        >
+          Done
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default function GalleryLightbox({
@@ -31,6 +136,7 @@ export default function GalleryLightbox({
   const [captionDraft, setCaptionDraft] = useState(batch.caption);
   const [photoDraft, setPhotoDraft] = useState(batch.photos);
   const [dragId, setDragId] = useState<string | null>(null);
+  const [repositionId, setRepositionId] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   // Lazy init reads localStorage once; the parent remounts this component (via `key={batch.id}`)
   // whenever a different post is opened, so this never goes stale across posts.
@@ -72,13 +178,21 @@ export default function GalleryLightbox({
     setPhotoDraft((cur) => (cur.length > 1 ? cur.filter((p) => p.id !== id) : cur));
   }
 
+  function updatePhotoPosition(id: string, posX: number, posY: number) {
+    setPhotoDraft((cur) => cur.map((p) => (p.id === id ? { ...p, posX, posY } : p)));
+  }
+
   async function saveEdits() {
     setSaving(true);
     try {
       const res = await fetch(`/api/gallery/${batch.id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ caption: captionDraft, photoIds: photoDraft.map((p) => p.id) }),
+        body: JSON.stringify({
+          caption: captionDraft,
+          photoIds: photoDraft.map((p) => p.id),
+          photoPositions: photoDraft.map((p) => ({ id: p.id, posX: p.posX, posY: p.posY })),
+        }),
       });
       if (res.ok) {
         const data = await res.json();
@@ -215,7 +329,7 @@ export default function GalleryLightbox({
               aspectRatio: '4/5',
               backgroundImage: `url(${photo.url})`,
               backgroundSize: 'cover',
-              backgroundPosition: 'center',
+              backgroundPosition: `${photo.posX}% ${photo.posY}%`,
             }}
           >
             {photoIdx > 0 && (
@@ -298,7 +412,7 @@ export default function GalleryLightbox({
 
         {editing ? (
           <div style={{ padding: '8px 16px 18px' }}>
-            {photoDraft.length > 1 && (
+            {photoDraft.length > 0 && (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 6, marginBottom: 10 }}>
                 {photoDraft.map((p) => (
                   <div
@@ -328,18 +442,22 @@ export default function GalleryLightbox({
                         height: '100%',
                         backgroundImage: `url(${p.url})`,
                         backgroundSize: 'cover',
-                        backgroundPosition: 'center',
+                        backgroundPosition: `${p.posX}% ${p.posY}%`,
                         pointerEvents: 'none',
                       }}
                     />
                     <div
-                      onClick={() => removePhotoDraft(p.id)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setRepositionId(p.id);
+                      }}
+                      title="사진 위치 조정"
                       style={{
                         position: 'absolute',
-                        top: 3,
-                        right: 3,
-                        width: 18,
-                        height: 18,
+                        bottom: 3,
+                        left: 3,
+                        width: 20,
+                        height: 20,
                         borderRadius: '50%',
                         background: 'rgba(0,0,0,0.6)',
                         color: '#fff',
@@ -351,8 +469,31 @@ export default function GalleryLightbox({
                         lineHeight: 1,
                       }}
                     >
-                      ×
+                      ⤢
                     </div>
+                    {photoDraft.length > 1 && (
+                      <div
+                        onClick={() => removePhotoDraft(p.id)}
+                        style={{
+                          position: 'absolute',
+                          top: 3,
+                          right: 3,
+                          width: 18,
+                          height: 18,
+                          borderRadius: '50%',
+                          background: 'rgba(0,0,0,0.6)',
+                          color: '#fff',
+                          fontSize: 11,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          cursor: 'pointer',
+                          lineHeight: 1,
+                        }}
+                      >
+                        ×
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -399,6 +540,14 @@ export default function GalleryLightbox({
           <div style={{ padding: '4px 16px 18px', fontSize: 13, color: 'rgba(22,22,21,0.8)', whiteSpace: 'pre-wrap' }}>{batch.caption}</div>
         )}
       </div>
+
+      {repositionId && (
+        <RepositionModal
+          photo={photoDraft.find((p) => p.id === repositionId)!}
+          onChange={(posX, posY) => updatePhotoPosition(repositionId, posX, posY)}
+          onClose={() => setRepositionId(null)}
+        />
+      )}
     </div>
   );
 }

@@ -34,9 +34,26 @@ export async function PATCH(req: NextRequest, ctx: RouteContext<'/api/gallery/[i
     ? body.photoIds.filter((v: unknown): v is string => typeof v === 'string')
     : null;
 
+  // photoPositions lets the editor drag-reposition each photo's focal point
+  // (0-100%, mapped to CSS background/object-position) without touching order.
+  const clamp = (n: number) => Math.max(0, Math.min(100, Math.round(n)));
+  const validPhotoIds = new Set(batch.photos.map((p) => p.id));
+  const photoPositions: { id: string; posX: number; posY: number }[] = Array.isArray(body?.photoPositions)
+    ? body.photoPositions
+        .filter(
+          (v: unknown): v is { id: string; posX: number; posY: number } =>
+            !!v &&
+            typeof v === 'object' &&
+            typeof (v as Record<string, unknown>).id === 'string' &&
+            validPhotoIds.has((v as Record<string, unknown>).id as string) &&
+            typeof (v as Record<string, unknown>).posX === 'number' &&
+            typeof (v as Record<string, unknown>).posY === 'number'
+        )
+        .map((v: { id: string; posX: number; posY: number }) => ({ id: v.id, posX: clamp(v.posX), posY: clamp(v.posY) }))
+    : [];
+
   if (photoIds) {
-    const validIds = new Set(batch.photos.map((p) => p.id));
-    const keepIds = photoIds.filter((pid) => validIds.has(pid));
+    const keepIds = photoIds.filter((pid) => validPhotoIds.has(pid));
     if (keepIds.length === 0) {
       return NextResponse.json({ error: 'at_least_one_photo' }, { status: 400 });
     }
@@ -45,16 +62,29 @@ export async function PATCH(req: NextRequest, ctx: RouteContext<'/api/gallery/[i
     await prisma.$transaction([
       prisma.galleryBatch.update({ where: { id }, data: { caption } }),
       ...keepIds.map((pid, i) => prisma.galleryPhoto.update({ where: { id: pid }, data: { order: i } })),
+      ...photoPositions.map((p) => prisma.galleryPhoto.update({ where: { id: p.id }, data: { posX: p.posX, posY: p.posY } })),
       ...(removed.length ? [prisma.galleryPhoto.deleteMany({ where: { id: { in: removed.map((p) => p.id) } } })] : []),
     ]);
     await Promise.all(removed.map((p) => deleteFile(p.url)));
 
     const photos = await prisma.galleryPhoto.findMany({ where: { batchId: id }, orderBy: { order: 'asc' } });
-    return NextResponse.json({ ok: true, caption, photos: photos.map((p) => ({ id: p.id, url: p.url })) });
+    return NextResponse.json({
+      ok: true,
+      caption,
+      photos: photos.map((p) => ({ id: p.id, url: p.url, posX: p.posX, posY: p.posY })),
+    });
   }
 
-  const updated = await prisma.galleryBatch.update({ where: { id }, data: { caption } });
-  return NextResponse.json({ ok: true, caption: updated.caption });
+  await prisma.$transaction([
+    prisma.galleryBatch.update({ where: { id }, data: { caption } }),
+    ...photoPositions.map((p) => prisma.galleryPhoto.update({ where: { id: p.id }, data: { posX: p.posX, posY: p.posY } })),
+  ]);
+  const photos = await prisma.galleryPhoto.findMany({ where: { batchId: id }, orderBy: { order: 'asc' } });
+  return NextResponse.json({
+    ok: true,
+    caption,
+    photos: photos.map((p) => ({ id: p.id, url: p.url, posX: p.posX, posY: p.posY })),
+  });
 }
 
 export async function DELETE(_req: NextRequest, ctx: RouteContext<'/api/gallery/[id]'>) {

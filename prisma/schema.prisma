@@ -37,5 +37,11 @@ model GalleryPhoto {
   batch     GalleryBatch @relation(fields: [batchId], references: [id], onDelete: Cascade)
   url       String
   order     Int          @default(0)
+  // Focal point within the photo, as a percentage (0-100) — maps directly to
+  // CSS background-position/object-position so the fixed-aspect crop shown
+  // in the grid/lightbox can be repositioned per photo instead of always
+  // centering.
+  posX      Int          @default(50)
+  posY      Int          @default(50)
   createdAt DateTime     @default(now())
 }

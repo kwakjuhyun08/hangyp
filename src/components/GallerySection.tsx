@@ -13,7 +13,7 @@ export interface GalleryBatch {
   createdAt: string;
   authorName: string;
   isOwner: boolean;
-  photos: { id: string; url: string }[];
+  photos: { id: string; url: string; posX: number; posY: number }[];
 }
 
 const VIEWED_KEY = 'hg_gallery_viewed';
@@ -125,7 +125,7 @@ export default function GallerySection() {
                         inset: 0,
                         backgroundImage: `url(${b.photos[0]?.url})`,
                         backgroundSize: 'cover',
-                        backgroundPosition: 'center',
+                        backgroundPosition: `${b.photos[0]?.posX ?? 50}% ${b.photos[0]?.posY ?? 50}%`,
                       }}
                     />
                     {b.photos.length > 1 && (

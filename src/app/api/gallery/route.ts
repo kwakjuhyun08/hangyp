@@ -26,7 +26,7 @@ export async function GET() {
       createdAt: b.createdAt,
       authorName: b.author.name,
       isOwner: b.authorId === currentMemberId,
-      photos: b.photos.map((p) => ({ id: p.id, url: p.url })),
+      photos: b.photos.map((p) => ({ id: p.id, url: p.url, posX: p.posX, posY: p.posY })),
     })),
   });
 }

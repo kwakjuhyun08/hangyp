@@ -251,6 +251,7 @@ export const COPY: Record<Lang, Copy> = {
         photo: '/uploads/timeline/kickoff-1.jpg',
       },
       { title: '2차 사전 교육 (온라인)', date: '8월 9일', desc: '소그룹 토의토론 결과 공유', photo: '/uploads/timeline/kickoff-2.jpg' },
+      { title: '국내 교류 활동', date: '8월 27~28일', desc: '', photo: '/uploads/timeline/domestic-exchange-1.jpg' },
     ],
   },
   en: {
@@ -382,6 +383,7 @@ export const COPY: Record<Lang, Copy> = {
         photo: '/uploads/timeline/kickoff-1.jpg',
       },
       { title: '2nd Preparatory Session (Online)', date: 'Aug 9', desc: 'Sharing small-group discussion results', photo: '/uploads/timeline/kickoff-2.jpg' },
+      { title: 'Domestic Exchange Activity', date: 'Aug 27–28', desc: '', photo: '/uploads/timeline/domestic-exchange-1.jpg' },
     ],
   },
   ar: {
@@ -511,6 +513,7 @@ export const COPY: Record<Lang, Copy> = {
         photo: '/uploads/timeline/kickoff-1.jpg',
       },
       { title: 'التدريب التحضيري الثاني (عبر الإنترنت)', date: '9 أغسطس', desc: 'مشاركة نتائج نقاش المجموعات الصغيرة', photo: '/uploads/timeline/kickoff-2.jpg' },
+      { title: 'نشاط التبادل المحلي', date: '27–28 أغسطس', desc: '', photo: '/uploads/timeline/domestic-exchange-1.jpg' },
     ],
   },
 };

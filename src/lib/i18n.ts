@@ -65,7 +65,6 @@ export interface Copy {
   fMotto: string;
   fPosition: string;
   fInstagram: string;
-  fPhone: string;
   aboutTitle: string;
   aboutSub: string;
   aboutMeaningTitle: string;
@@ -174,7 +173,6 @@ export const COPY: Record<Lang, Copy> = {
     fMotto: '좌우명',
     fPosition: '담당',
     fInstagram: '인스타그램',
-    fPhone: '전화번호',
     aboutTitle: '소개',
     aboutSub: '다른 문화, 한 지붕, 하나의 미래',
     aboutMeaningTitle: '이름에 담긴 의미',
@@ -304,7 +302,6 @@ export const COPY: Record<Lang, Copy> = {
     fMotto: 'Motto',
     fPosition: 'Position',
     fInstagram: 'Instagram',
-    fPhone: 'Phone',
     aboutTitle: 'About Us',
     aboutSub: 'Different Cultures, One Roof, One Future',
     aboutMeaningTitle: 'The Meaning Behind Our Name',
@@ -436,7 +433,6 @@ export const COPY: Record<Lang, Copy> = {
     fMotto: 'الشعار',
     fPosition: 'المنصب',
     fInstagram: 'إنستغرام',
-    fPhone: 'الهاتف',
     aboutTitle: 'من نحن',
     aboutSub: 'ثقافات مختلفة، سقف واحد، مستقبل واحد',
     aboutMeaningTitle: 'المعنى وراء اسمنا',

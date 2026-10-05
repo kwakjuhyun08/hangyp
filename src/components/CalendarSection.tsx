@@ -30,7 +30,7 @@ function buildMonth(monthIndex0: number, calEvents: { month: number; day: number
 
 export default function CalendarSection() {
   const { t } = useLang();
-  const [monthIdx, setMonthIdx] = useState(6); // July
+  const [monthIdx, setMonthIdx] = useState(9); // October
   const [selectedEvent, setSelectedEvent] = useState(-1);
 
   const monthIndices = monthIdx + 1 <= 11 ? [monthIdx, monthIdx + 1] : [monthIdx];

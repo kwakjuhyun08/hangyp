@@ -12,13 +12,11 @@ export interface MemberBio {
   dream?: string;
   motto?: string;
   instagram?: string;
-  phone?: string;
 }
 
 // Free-text answers from the team roster form, kept per-language (ko: as submitted,
 // en/ar: translated). Fields left blank on the form are simply omitted here so the
-// detail view can skip rendering that row entirely. Phone numbers are partially
-// masked (last two digits of each group hidden) since these profiles are public.
+// detail view can skip rendering that row entirely.
 export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
   ko: {
     1: {
@@ -33,7 +31,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: '경제, SCM, 위기 관리 분야의 전문가',
       motto: "DON'T COMPROMISE WITH MY SELF",
       instagram: '@hyum35',
-      phone: '010-53XX-29XX',
     },
     2: {
       position: '서기',
@@ -47,7 +44,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: '성공하기',
       motto: '안 되면 되게 하라!',
       instagram: '@bojoegm',
-      phone: '010-46XX-74XX',
     },
     3: {
       position: '홍보담당',
@@ -61,7 +57,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: '패션모델',
       motto: '유행을 따르지 않고 나만의 기준을 세운다',
       instagram: 'yeonz._zo',
-      phone: '010-88XX-84XX',
     },
     4: {
       position: '대표',
@@ -75,7 +70,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: 'CEO / 베풀며 행복하게 살기',
       motto: '나만의 속도로 살자',
       instagram: '@tjwlss',
-      phone: '010-56XX-85XX',
     },
     5: {
       position: '통역',
@@ -83,7 +77,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       interests: '여행, 고양이, 영화',
       dream: '아랍어 통역사',
       motto: '다정함 · 꼼꼼함 · 모험심',
-      phone: '010-49XX-49XX',
     },
     6: {
       position: '토의활동 담당',
@@ -97,21 +90,12 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: '세계 일주하기',
       motto: '세상을 보라.',
       instagram: '@soxwe_',
-      phone: '010-32XX-80XX',
     },
     7: {
       position: '문화발표 담당',
       age: '17',
-      mbti: 'ESTP',
-      interests: '운동',
-      skill: '태권도',
-      food: '햄버거',
-      color: '핑크',
-      music: '러브어택 · 리센느 · 발라드',
       dream: '경찰',
-      motto: '한 걸음씩 꾸준히.',
       instagram: '@tkd_dmsdn',
-      phone: '010-52XX-62XX',
     },
     8: {
       position: '서기',
@@ -122,13 +106,11 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       food: '떡볶이, 피자',
       color: '옥색',
       instagram: '@subeen.09',
-      phone: '010-67XX-69XX',
     },
     9: {
       position: '사진·영상 담당',
       age: '17',
       instagram: 'biinu.o',
-      phone: '010-92XX-33XX',
     },
     10: {
       position: '사진·영상 담당',
@@ -140,7 +122,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: '100개국 여행하기',
       motto: '나는 천천히 걷지만 절대 뒤로 걷진 않는다',
       instagram: '@eeeeung_',
-      phone: '010-58XX-07XX',
     },
     11: {
       position: '부대표',
@@ -154,7 +135,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: '외교관',
       motto: '과거를 두고 후회하지 않기',
       instagram: '@24.7lv',
-      phone: '010-55XX-61XX',
     },
     12: {
       position: '홍보담당',
@@ -168,7 +148,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: '세계일주하기',
       motto: '보통의 존재로 행복하기',
       instagram: '@no0owis · blog.naver.com/no0owis',
-      phone: '010-33XX-60XX',
     },
     13: {
       position: '총무',
@@ -178,7 +157,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: '스튜어디스',
       motto: 'Sum-Zero',
       instagram: '@sua_ann',
-      phone: '010-42XX-77XX',
     },
   },
   en: {
@@ -194,7 +172,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: 'Becoming an expert in economics, SCM, and crisis management',
       motto: "DON'T COMPROMISE WITH MY SELF",
       instagram: '@hyum35',
-      phone: '+82 10-53XX-29XX',
     },
     2: {
       position: 'Documentation Manager',
@@ -208,7 +185,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: 'To succeed',
       motto: "If it can't be done, make it happen!",
       instagram: '@bojoegm',
-      phone: '+82 10-46XX-74XX',
     },
     3: {
       position: 'Public Relations Coordinator',
@@ -222,7 +198,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: 'Fashion model',
       motto: 'Follow no trends. Set your own.',
       instagram: 'yeonz._zo',
-      phone: '+82 10-88XX-84XX',
     },
     4: {
       position: 'Team Leader',
@@ -236,7 +211,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: 'CEO / Living happily by giving back',
       motto: 'Live at my own pace',
       instagram: '@tjwlss',
-      phone: '+82 10-56XX-85XX',
     },
     5: {
       position: 'Interpreter',
@@ -244,7 +218,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       interests: 'Travel, cats, movies',
       dream: 'Arabic translator',
       motto: 'Friendly · Detailed · Adventurous',
-      phone: '+82 10-49XX-49XX',
     },
     6: {
       position: 'Discussion Activities Coordinator',
@@ -258,21 +231,12 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: 'Travel around the world',
       motto: 'See the world.',
       instagram: '@soxwe_',
-      phone: '+82 10-32XX-80XX',
     },
     7: {
       position: 'Cultural Presentation Coordinator',
       age: '17',
-      mbti: 'ESTP',
-      interests: 'Exercise',
-      skill: 'Taekwondo',
-      food: 'Hamburger',
-      color: 'Pink',
-      music: 'Love Attack · Lucianne · ballads',
       dream: 'Police officer',
-      motto: 'Step by step, steadily.',
       instagram: '@tkd_dmsdn',
-      phone: '+82 10-52XX-62XX',
     },
     8: {
       position: 'Documentation Manager',
@@ -283,13 +247,11 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       food: 'Tteokbokki, pizza',
       color: 'Jade',
       instagram: '@subeen.09',
-      phone: '+82 10-67XX-69XX',
     },
     9: {
       position: 'Photo & Video Coordinator',
       age: '17',
       instagram: 'biinu.o',
-      phone: '+82 10-92XX-33XX',
     },
     10: {
       position: 'Photo & Video Coordinator',
@@ -301,7 +263,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: 'Visit 100 countries',
       motto: 'I walk slowly, but I never walk backward.',
       instagram: '@eeeeung_',
-      phone: '+82 10-58XX-07XX',
     },
     11: {
       position: 'Deputy Team Leader',
@@ -315,7 +276,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: 'Diplomat',
       motto: 'Never regret the past',
       instagram: '@24.7lv',
-      phone: '+82 10-55XX-61XX',
     },
     12: {
       position: 'Public Relations Coordinator',
@@ -329,7 +289,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: 'Travel around the world',
       motto: 'Be happy as an ordinary person',
       instagram: '@no0owis · blog.naver.com/no0owis',
-      phone: '+82 10-33XX-60XX',
     },
     13: {
       position: 'Treasurer',
@@ -339,7 +298,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: 'Flight attendant',
       motto: 'Sum-Zero',
       instagram: '@sua_ann',
-      phone: '+82 10-42XX-77XX',
     },
   },
   ar: {
@@ -355,7 +313,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: 'أن يصبح خبيرًا في الاقتصاد وإدارة سلاسل التوريد وإدارة الأزمات',
       motto: 'لا تساوم مع نفسك',
       instagram: '@hyum35',
-      phone: '+82 10-53XX-29XX',
     },
     2: {
       position: 'مسؤول التوثيق',
@@ -369,7 +326,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: 'تحقيق النجاح',
       motto: 'إن لم يكن ممكنًا، اجعله ممكنًا!',
       instagram: '@bojoegm',
-      phone: '+82 10-46XX-74XX',
     },
     3: {
       position: 'منسق العلاقات العامة',
@@ -383,7 +339,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: 'عارضة أزياء',
       motto: 'لا تتبعي الموضة، بل ضعي معاييرك الخاصة',
       instagram: 'yeonz._zo',
-      phone: '+82 10-88XX-84XX',
     },
     4: {
       position: 'رئيس الفريق',
@@ -397,7 +352,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: 'أن تصبح مديرة تنفيذية وتعيش سعيدة بالعطاء',
       motto: 'عيشي بوتيرتك الخاصة',
       instagram: '@tjwlss',
-      phone: '+82 10-56XX-85XX',
     },
     5: {
       position: 'مترجم',
@@ -405,7 +359,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       interests: 'السفر، القطط، الأفلام',
       dream: 'مترجمة لغة عربية',
       motto: 'ودودة · دقيقة · مغامِرة',
-      phone: '+82 10-49XX-49XX',
     },
     6: {
       position: 'منسق الأنشطة النقاشية',
@@ -419,21 +372,12 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: 'السفر حول العالم',
       motto: 'انظر إلى العالم.',
       instagram: '@soxwe_',
-      phone: '+82 10-32XX-80XX',
     },
     7: {
       position: 'منسق عرض الثقافة',
       age: '17',
-      mbti: 'ESTP',
-      interests: 'الرياضة',
-      skill: 'التايكوندو',
-      food: 'همبرغر',
-      color: 'وردي',
-      music: 'لوف أتاك · ليسين · بالاد',
       dream: 'ضابط شرطة',
-      motto: 'خطوة بخطوة، بثبات.',
       instagram: '@tkd_dmsdn',
-      phone: '+82 10-52XX-62XX',
     },
     8: {
       position: 'مسؤول التوثيق',
@@ -444,13 +388,11 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       food: 'توكبوكي، بيتزا',
       color: 'أخضر يشمي',
       instagram: '@subeen.09',
-      phone: '+82 10-67XX-69XX',
     },
     9: {
       position: 'منسق التصوير الفوتوغرافي والفيديو',
       age: '17',
       instagram: 'biinu.o',
-      phone: '+82 10-92XX-33XX',
     },
     10: {
       position: 'منسق التصوير الفوتوغرافي والفيديو',
@@ -462,7 +404,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: 'زيارة 100 دولة',
       motto: 'أمشي ببطء، لكنني لا أعود إلى الخلف أبدًا.',
       instagram: '@eeeeung_',
-      phone: '+82 10-58XX-07XX',
     },
     11: {
       position: 'نائب رئيس الفريق',
@@ -476,7 +417,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: 'دبلوماسي',
       motto: 'لا تندم على الماضي أبدًا',
       instagram: '@24.7lv',
-      phone: '+82 10-55XX-61XX',
     },
     12: {
       position: 'منسق العلاقات العامة',
@@ -490,7 +430,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: 'السفر حول العالم',
       motto: 'أن تكون سعيدًا كشخص عادي',
       instagram: '@no0owis · blog.naver.com/no0owis',
-      phone: '+82 10-33XX-60XX',
     },
     13: {
       position: 'أمين الصندوق',
@@ -500,7 +439,6 @@ export const TEAM_BIOS: Record<Lang, Record<number, MemberBio>> = {
       dream: 'مضيفة طيران',
       motto: 'Sum-Zero',
       instagram: '@sua_ann',
-      phone: '+82 10-42XX-77XX',
     },
   },
 };

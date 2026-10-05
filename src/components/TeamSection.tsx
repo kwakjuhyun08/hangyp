@@ -23,7 +23,6 @@ const FIELD_KEYS = [
   ['fDream', 'dream'],
   ['fMotto', 'motto'],
   ['fInstagram', 'instagram'],
-  ['fPhone', 'phone'],
 ] as const satisfies readonly (readonly [string, keyof MemberBio])[];
 
 const LOOP = [...MEMBERS, ...MEMBERS];
